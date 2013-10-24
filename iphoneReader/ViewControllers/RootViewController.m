@@ -7,8 +7,7 @@
 //
 
 #import "RootViewController.h"
-#import "ASIHTTPRequest.h"
-
+#import "OCMapper.h"
 @interface RootViewController ()
 
 @end
@@ -51,7 +50,10 @@
 - (void)requestFinished:(ASIHTTPRequest *)request{
 
     NSData *responseData = [request responseData];
-    NSLog(@"%@",responseData);
+    NSError *error = [request error];
+    NSDictionary *jsonDictionary = [NSJSONSerialization JSONObjectWithData:responseData options:0 error:&error];
+    NSArray *booksArray = [jsonDictionary objectForKey:@"books"];
+    NSLog(@"%@",[booksArray objectAtIndex:0]);
 }
 
 -(void)requestFailed :(ASIHTTPRequest *)request{

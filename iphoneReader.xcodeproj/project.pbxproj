@@ -21,8 +21,8 @@
 		9A4D81A31816879E00960293 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A4D81A21816879E00960293 /* Security.framework */; };
 		9A4D81AF1816893D00960293 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A4D81AE1816893D00960293 /* SystemConfiguration.framework */; };
 		9A4D81C518168E3000960293 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A4D81C418168E3000960293 /* CoreData.framework */; };
+		9A52053D1818FF8100CE4792 /* book.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A52053C1818FF8100CE4792 /* book.m */; };
 		9AB0E75C1817AF6600166BDB /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AB0E75B1817AF6600166BDB /* RootViewController.m */; };
-		9AB0E75F1817C3BD00166BDB /* BookModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AB0E75E1817C3BD00166BDB /* BookModel.m */; };
 		F84FA6A54C87468A87FC2FC9 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 645EA8F5B25044A1B88D39F5 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -47,10 +47,10 @@
 		9A4D81A21816879E00960293 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		9A4D81AE1816893D00960293 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		9A4D81C418168E3000960293 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		9A52053B1818FF8100CE4792 /* book.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = book.h; sourceTree = "<group>"; };
+		9A52053C1818FF8100CE4792 /* book.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = book.m; sourceTree = "<group>"; };
 		9AB0E75A1817AF6600166BDB /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		9AB0E75B1817AF6600166BDB /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
-		9AB0E75D1817C3BD00166BDB /* BookModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookModel.h; sourceTree = "<group>"; };
-		9AB0E75E1817C3BD00166BDB /* BookModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,8 +137,8 @@
 		9AB0E7571817AF3700166BDB /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				9AB0E75D1817C3BD00166BDB /* BookModel.h */,
-				9AB0E75E1817C3BD00166BDB /* BookModel.m */,
+				9A52053B1818FF8100CE4792 /* book.h */,
+				9A52053C1818FF8100CE4792 /* book.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -262,7 +262,7 @@
 				9A477209181673F800088FAC /* main.m in Sources */,
 				9A47720D181673F800088FAC /* AppDelegate.m in Sources */,
 				9AB0E75C1817AF6600166BDB /* RootViewController.m in Sources */,
-				9AB0E75F1817C3BD00166BDB /* BookModel.m in Sources */,
+				9A52053D1818FF8100CE4792 /* book.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

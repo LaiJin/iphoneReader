@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface RootViewController : UIViewController
+#import "ASIHTTPRequest.h"
+@interface RootViewController : UIViewController<ASIHTTPRequestDelegate>
 
 @end
