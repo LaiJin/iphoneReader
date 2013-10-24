@@ -37,7 +37,7 @@
     // Dispose of any resources that can be recreated.
 }
 
-
+//异步请求
 -(void)getURLInBackground{
     
     NSURL *url = [NSURL URLWithString:@"https://api.douban.com/v2/book/search?tag=computer"];
@@ -49,9 +49,9 @@
 }
 
 - (void)requestFinished:(ASIHTTPRequest *)request{
-    
-    NSString *responseString = [request responseString];
-    NSLog(@"%@",responseString);
+
+    NSData *responseData = [request responseData];
+    NSLog(@"%@",responseData);
 }
 
 -(void)requestFailed :(ASIHTTPRequest *)request{
