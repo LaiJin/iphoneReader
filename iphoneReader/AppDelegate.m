@@ -8,6 +8,10 @@
 
 #import "AppDelegate.h"
 #import "RootViewController.h"
+#import "ObjectInstanceProvider.h"
+#import "CommonLoggingProvider.h"
+#import "ObjectMapper.h"
+#import "Book.h"
 
 @implementation AppDelegate
 
@@ -16,6 +20,15 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
+    ObjectInstanceProvider *instanceProvider = [[ObjectInstanceProvider alloc] init];
+	self.inCodeMappingProvider = [[InCodeMappingProvider alloc] init];
+    CommonLoggingProvider *commonLoggingProvider = [[CommonLoggingProvider alloc] initWithLogLevel:LogLevelInfo];//用于检测网页上哪些key值没有被Mapping
+    [[ObjectMapper sharedInstance] setLoggingProvider:commonLoggingProvider];
+    [self.inCodeMappingProvider mapFromDictionaryKey:@"id" toPropertyKey:@"book_id"
+                                            forClass:[Book class]];//如果设置book的属性值和网页上的key不同的时候，
+                                                                   //可以用写这句代码让它识别。
+	[[ObjectMapper sharedInstance] setInstanceProvider:instanceProvider];
+	[[ObjectMapper sharedInstance] setMappingProvider:self.inCodeMappingProvider];
     RootViewController *rootViewController = [[RootViewController alloc]init];
     self.window.rootViewController = rootViewController;
     [self.window makeKeyAndVisible];

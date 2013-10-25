@@ -21,7 +21,10 @@
 		9A4D81A31816879E00960293 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A4D81A21816879E00960293 /* Security.framework */; };
 		9A4D81AF1816893D00960293 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A4D81AE1816893D00960293 /* SystemConfiguration.framework */; };
 		9A4D81C518168E3000960293 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A4D81C418168E3000960293 /* CoreData.framework */; };
-		9A52053D1818FF8100CE4792 /* book.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A52053C1818FF8100CE4792 /* book.m */; };
+		9A52053D1818FF8100CE4792 /* Book.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A52053C1818FF8100CE4792 /* Book.m */; };
+		9A5925D5181916C800CE1206 /* Image.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A5925D4181916C800CE1206 /* Image.m */; };
+		9A5925D81819189200CE1206 /* Rating.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A5925D71819189200CE1206 /* Rating.m */; };
+		9A5925DB181922B100CE1206 /* Tags.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A5925DA181922B100CE1206 /* Tags.m */; };
 		9AB0E75C1817AF6600166BDB /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AB0E75B1817AF6600166BDB /* RootViewController.m */; };
 		F84FA6A54C87468A87FC2FC9 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 645EA8F5B25044A1B88D39F5 /* libPods.a */; };
 /* End PBXBuildFile section */
@@ -47,8 +50,14 @@
 		9A4D81A21816879E00960293 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		9A4D81AE1816893D00960293 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		9A4D81C418168E3000960293 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
-		9A52053B1818FF8100CE4792 /* book.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = book.h; sourceTree = "<group>"; };
-		9A52053C1818FF8100CE4792 /* book.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = book.m; sourceTree = "<group>"; };
+		9A52053B1818FF8100CE4792 /* Book.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Book.h; sourceTree = "<group>"; };
+		9A52053C1818FF8100CE4792 /* Book.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Book.m; sourceTree = "<group>"; };
+		9A5925D3181916C800CE1206 /* Image.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Image.h; sourceTree = "<group>"; };
+		9A5925D4181916C800CE1206 /* Image.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Image.m; sourceTree = "<group>"; };
+		9A5925D61819189200CE1206 /* Rating.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Rating.h; sourceTree = "<group>"; };
+		9A5925D71819189200CE1206 /* Rating.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Rating.m; sourceTree = "<group>"; };
+		9A5925D9181922B100CE1206 /* Tags.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tags.h; sourceTree = "<group>"; };
+		9A5925DA181922B100CE1206 /* Tags.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tags.m; sourceTree = "<group>"; };
 		9AB0E75A1817AF6600166BDB /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		9AB0E75B1817AF6600166BDB /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -114,7 +123,7 @@
 				9A47720C181673F800088FAC /* AppDelegate.m */,
 				9AB0E7571817AF3700166BDB /* Models */,
 				9AB0E7591817AF3700166BDB /* Views */,
-				9AB0E7581817AF3700166BDB /* ViewControllers */,
+				9AB0E7581817AF3700166BDB /* Controllers */,
 				9A477203181673F800088FAC /* Supporting Files */,
 			);
 			path = iphoneReader;
@@ -134,21 +143,60 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		9A5925DC181922CF00CE1206 /* BookModel */ = {
+			isa = PBXGroup;
+			children = (
+				9A52053B1818FF8100CE4792 /* Book.h */,
+				9A52053C1818FF8100CE4792 /* Book.m */,
+			);
+			name = BookModel;
+			sourceTree = "<group>";
+		};
+		9A5925DD181922E900CE1206 /* ImageSizeModel */ = {
+			isa = PBXGroup;
+			children = (
+				9A5925D3181916C800CE1206 /* Image.h */,
+				9A5925D4181916C800CE1206 /* Image.m */,
+			);
+			name = ImageSizeModel;
+			sourceTree = "<group>";
+		};
+		9A5925DE1819241B00CE1206 /* RatingModel */ = {
+			isa = PBXGroup;
+			children = (
+				9A5925D61819189200CE1206 /* Rating.h */,
+				9A5925D71819189200CE1206 /* Rating.m */,
+			);
+			name = RatingModel;
+			sourceTree = "<group>";
+		};
+		9A5925E01819244900CE1206 /* TagsModel */ = {
+			isa = PBXGroup;
+			children = (
+				9A5925D9181922B100CE1206 /* Tags.h */,
+				9A5925DA181922B100CE1206 /* Tags.m */,
+			);
+			name = TagsModel;
+			sourceTree = "<group>";
+		};
 		9AB0E7571817AF3700166BDB /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				9A52053B1818FF8100CE4792 /* book.h */,
-				9A52053C1818FF8100CE4792 /* book.m */,
+				9A5925DC181922CF00CE1206 /* BookModel */,
+				9A5925DD181922E900CE1206 /* ImageSizeModel */,
+				9A5925DE1819241B00CE1206 /* RatingModel */,
+				9A5925E01819244900CE1206 /* TagsModel */,
 			);
 			path = Models;
 			sourceTree = "<group>";
 		};
-		9AB0E7581817AF3700166BDB /* ViewControllers */ = {
+		9AB0E7581817AF3700166BDB /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
 				9AB0E75A1817AF6600166BDB /* RootViewController.h */,
 				9AB0E75B1817AF6600166BDB /* RootViewController.m */,
 			);
+			name = Controllers;
 			path = ViewControllers;
 			sourceTree = "<group>";
 		};
@@ -262,7 +310,10 @@
 				9A477209181673F800088FAC /* main.m in Sources */,
 				9A47720D181673F800088FAC /* AppDelegate.m in Sources */,
 				9AB0E75C1817AF6600166BDB /* RootViewController.m in Sources */,
-				9A52053D1818FF8100CE4792 /* book.m in Sources */,
+				9A52053D1818FF8100CE4792 /* Book.m in Sources */,
+				9A5925D5181916C800CE1206 /* Image.m in Sources */,
+				9A5925D81819189200CE1206 /* Rating.m in Sources */,
+				9A5925DB181922B100CE1206 /* Tags.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

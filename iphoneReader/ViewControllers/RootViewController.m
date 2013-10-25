@@ -8,6 +8,8 @@
 
 #import "RootViewController.h"
 #import "OCMapper.h"
+#import "Book.h"
+#import "Tags.h"
 @interface RootViewController ()
 
 @end
@@ -53,7 +55,13 @@
     NSError *error = [request error];
     NSDictionary *jsonDictionary = [NSJSONSerialization JSONObjectWithData:responseData options:0 error:&error];
     NSArray *booksArray = [jsonDictionary objectForKey:@"books"];
-    NSLog(@"%@",[booksArray objectAtIndex:0]);
+    for (int i = 0; i < [booksArray count]; i++) {
+        Book *indexBook = [Book objectFromDictionary: [booksArray objectAtIndex:i]];
+        Tags *tags = [indexBook.tags objectAtIndex:0];
+        NSLog(@"%@",tags.name);
+        NSLog(@"%@",indexBook.images);
+    }
+    
 }
 
 -(void)requestFailed :(ASIHTTPRequest *)request{
