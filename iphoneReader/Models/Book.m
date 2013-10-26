@@ -10,7 +10,7 @@
 
 @implementation Book
 
--(void)encodeWithCoder:(NSCoder *)aCoder{
+- (void)encodeWithCoder:(NSCoder *)aCoder{
     
     [aCoder encodeObject:self.alt forKey:@"book_alt"];
     [aCoder encodeObject:self.alt_title forKey:@"book_alt_title"];
@@ -37,7 +37,7 @@
     [aCoder encodeObject:self.rating forKey:@"book_rating"];
 }
 
--(id)initWithCoder:(NSCoder *)aDecoder{
+- (id)initWithCoder:(NSCoder *)aDecoder{
     
     self = [super init];
     if (self) {

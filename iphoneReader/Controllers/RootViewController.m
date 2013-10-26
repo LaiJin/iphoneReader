@@ -31,6 +31,9 @@
     [super viewDidLoad];
      bookList = [[BookList alloc]init];
     [bookList getURLInBackground:self];
+    booklistTableView = [[BookListTableView alloc]init];
+    [bookList unarchiveBookListArray];
+    [booklistTableView addBookListTableView:self];
 	// Do any additional setup after loading the view.
 }
 
@@ -52,14 +55,37 @@
         Book *indexBook = [Book objectFromDictionary: [booksArray objectAtIndex:i]];
         [bookListArray addObject:indexBook];
     }
-    [bookList getBookListArray:bookListArray];
+    [bookList archiveBookListArray:bookListArray];
     
 }
--(void)requestFailed :(ASIHTTPRequest *)request{
+
+- (void)requestFailed :(ASIHTTPRequest *)request{
     
     NSError *error = [request error];
     NSLog(@"%@",error);
     
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    
+    return [bookList countOfBookListArray];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    static NSString *booklistCellIdentifier = @"booklistCellIdentifier";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:booklistCellIdentifier];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:booklistCellIdentifier];
+    }
+    cell.textLabel.text = [bookList bookTitle:indexPath.row];
+    
+    return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 @end

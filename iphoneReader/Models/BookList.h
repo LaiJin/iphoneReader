@@ -7,12 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import "Book.h"
 
 
 @interface BookList : NSObject<NSCoding>{
     
     NSArray *bookListArray;
+    Book *indexBook;
     
 }
     
@@ -20,8 +21,10 @@
     
 
 
--(void)getURLInBackground :(UIViewController *)rootViewController;
--(void)getBookListArray :(NSMutableArray *)bookListMutableArray;
-
+- (void)getURLInBackground :(UIViewController *)rootViewController;
+- (void)archiveBookListArray :(NSMutableArray *)bookListMutableArray;
+- (NSInteger)countOfBookListArray;
+- (NSString *)bookTitle :(NSInteger)indexPathRow;
+- (void)unarchiveBookListArray;
 
 @end

@@ -8,16 +8,17 @@
 
 #import "BookList.h"
 #import "ASIHTTPRequest.h"
+#import "Tags.h"
 
 @implementation BookList
 
--(void)encodeWithCoder:(NSCoder *)aCoder{
+- (void)encodeWithCoder:(NSCoder *)aCoder{
     
     [aCoder encodeObject:bookListArray forKey:@"bookList"];
     
 }
 
--(id)initWithCoder:(NSCoder *)aDecoder{
+- (id)initWithCoder:(NSCoder *)aDecoder{
     
     self = [super init];
     if (self) {
@@ -29,7 +30,7 @@
 
 
 //异步请求
--(void)getURLInBackground :(UIViewController *)rootViewController{
+- (void)getURLInBackground :(UIViewController *)rootViewController{
     
     NSURL *url = [NSURL URLWithString:@"https://api.douban.com/v2/book/search?tag=computer"];
     ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
@@ -38,22 +39,35 @@
     
     
 }
-
--(void)getBookListArray:(NSMutableArray *)bookListMutableArray{
+- (NSString *)booklistFilePath{
     
-    bookListArray = [NSArray arrayWithArray:bookListMutableArray];
     NSString *bookListFilePath =  [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
     bookListFilePath= [bookListFilePath stringByAppendingPathComponent:@"bookList.plist"];
-    NSLog(@"%@",bookListFilePath);
-    if ([[NSFileManager defaultManager] fileExistsAtPath:bookListFilePath]) {
-        
-        [NSKeyedArchiver archiveRootObject:bookListArray toFile:bookListFilePath];
-        NSArray *unarchiverBookList = [NSKeyedUnarchiver unarchiveObjectWithFile:bookListFilePath];
-        NSLog(@"%@",unarchiverBookList);
-
-    }
-    
+    return bookListFilePath;
 }
 
+- (void)archiveBookListArray:(NSMutableArray *)bookListMutableArray{
+    
+    bookListArray = [NSArray arrayWithArray:bookListMutableArray];
+    if ([[NSFileManager defaultManager] fileExistsAtPath:[self booklistFilePath]])
+    [NSKeyedArchiver archiveRootObject:bookListArray toFile:[self booklistFilePath]];
+}
+
+- (NSInteger)countOfBookListArray{
+    
+    return [bookListArray count];
+}
+
+- (void)unarchiveBookListArray{
+    
+    bookListArray = [NSKeyedUnarchiver unarchiveObjectWithFile:[self booklistFilePath]];
+}
+
+    
+- (NSString *)bookTitle :(NSInteger)indexPathRow{
+    
+    indexBook = [bookListArray objectAtIndex:indexPathRow];
+    return indexBook.title;
+}
 
 @end

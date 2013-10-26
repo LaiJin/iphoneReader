@@ -26,6 +26,7 @@
 		9A5925D81819189200CE1206 /* Rating.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A5925D71819189200CE1206 /* Rating.m */; };
 		9A5925DB181922B100CE1206 /* Tags.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A5925DA181922B100CE1206 /* Tags.m */; };
 		9A85A9D0181B5F2900FDB0BF /* BookList.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A85A9CF181B5F2900FDB0BF /* BookList.m */; };
+		9AEA17D2181B967E00448264 /* BookListTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AEA17D1181B967E00448264 /* BookListTableView.m */; };
 		9AF78430181AA1580056DB62 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AF7842F181AA1580056DB62 /* RootViewController.m */; };
 		F84FA6A54C87468A87FC2FC9 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 645EA8F5B25044A1B88D39F5 /* libPods.a */; };
 /* End PBXBuildFile section */
@@ -61,6 +62,8 @@
 		9A5925DA181922B100CE1206 /* Tags.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tags.m; sourceTree = "<group>"; };
 		9A85A9CE181B5F2900FDB0BF /* BookList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookList.h; sourceTree = "<group>"; };
 		9A85A9CF181B5F2900FDB0BF /* BookList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookList.m; sourceTree = "<group>"; };
+		9AEA17D0181B967E00448264 /* BookListTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookListTableView.h; sourceTree = "<group>"; };
+		9AEA17D1181B967E00448264 /* BookListTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookListTableView.m; sourceTree = "<group>"; };
 		9AF7842E181AA1580056DB62 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		9AF7842F181AA1580056DB62 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -206,6 +209,8 @@
 		9AB0E7591817AF3700166BDB /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				9AEA17D0181B967E00448264 /* BookListTableView.h */,
+				9AEA17D1181B967E00448264 /* BookListTableView.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -327,6 +332,7 @@
 				9A5925DB181922B100CE1206 /* Tags.m in Sources */,
 				9AF78430181AA1580056DB62 /* RootViewController.m in Sources */,
 				9A85A9D0181B5F2900FDB0BF /* BookList.m in Sources */,
+				9AEA17D2181B967E00448264 /* BookListTableView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

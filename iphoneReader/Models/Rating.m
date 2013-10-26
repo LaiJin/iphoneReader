@@ -10,7 +10,7 @@
 
 @implementation Rating
 
--(void)encodeWithCoder:(NSCoder *)aCoder{
+- (void)encodeWithCoder:(NSCoder *)aCoder{
     
     [aCoder encodeObject:self.average forKey:@"rating_average"];
     [aCoder encodeObject:self.max forKey:@"rating_max"];
@@ -18,7 +18,7 @@
     [aCoder encodeObject:self.numRaters forKey:@"rating_numRates"];
 }
 
--(id)initWithCoder:(NSCoder *)aDecoder{
+- (id)initWithCoder:(NSCoder *)aDecoder{
     
     self = [super init];
     if (self) {

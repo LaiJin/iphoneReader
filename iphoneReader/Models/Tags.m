@@ -10,14 +10,14 @@
 
 @implementation Tags
 
--(void)encodeWithCoder:(NSCoder *)aCoder{
+- (void)encodeWithCoder:(NSCoder *)aCoder{
     
     [aCoder encodeObject:self.count forKey:@"tags_count"];
     [aCoder encodeObject:self.name forKey:@"tags_name"];
     [aCoder encodeObject:self.title forKey:@"tags_title"];
     
 }
--(id)initWithCoder:(NSCoder *)aDecoder{
+- (id)initWithCoder:(NSCoder *)aDecoder{
     
     self = [super init];
     if (self) {
