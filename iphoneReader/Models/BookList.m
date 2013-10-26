@@ -52,8 +52,9 @@
         indexBook = [Book objectFromDictionary: [booksArray objectAtIndex:i]];
         [bookListArray addObject:indexBook];
     }
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"requestFinished" object:nil];
     NSLog(@"%@",bookListArray);
-    [self archiveBookListArray];
+    //[self archiveBookListArray];
     
 }
 
@@ -64,24 +65,24 @@
     
 }
 
-- (void)archiveBookListArray{
-    
-    [NSKeyedArchiver archiveRootObject:bookListArray toFile:[self booklistPath]];
-   
-}
-
-- (void)unarchiveBookListArray{
-    
-    if ([[NSFileManager defaultManager] fileExistsAtPath: [self booklistPath]])
-        bookListArray = [NSKeyedUnarchiver unarchiveObjectWithFile:[self booklistPath]];
-}
-
-- (NSString *)booklistPath{
-    
-    NSString *bookListFilePath =  [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
-    bookListFilePath= [bookListFilePath stringByAppendingPathComponent:@"bookList.plist"];
-    return bookListFilePath;
-}
+//- (void)archiveBookListArray{
+//    
+//    [NSKeyedArchiver archiveRootObject:bookListArray toFile:[self booklistPath]];
+//   
+//}
+//
+//- (void)unarchiveBookListArray{
+//    
+//    if ([[NSFileManager defaultManager] fileExistsAtPath: [self booklistPath]])
+//        bookListArray = [NSKeyedUnarchiver unarchiveObjectWithFile:[self booklistPath]];
+//}
+//
+//- (NSString *)booklistPath{
+//    
+//    NSString *bookListFilePath =  [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+//    bookListFilePath= [bookListFilePath stringByAppendingPathComponent:@"bookList.plist"];
+//    return bookListFilePath;
+//}
 
 
 

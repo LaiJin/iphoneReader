@@ -24,15 +24,21 @@
     return self;
 }
 
+
+- (void)addTableView{
+    
+    BookListTableView *booklistTableView = [[BookListTableView alloc]init];
+    [booklistTableView addBookListTableView:self];
+    
+}
 - (void)viewDidLoad
 {
     [super viewDidLoad];
      bookList = [[BookList alloc]init];
     [bookList getURLInBackground];
-    [bookList unarchiveBookListArray];
-    BookListTableView *booklistTableView = [[BookListTableView alloc]init];
-    [booklistTableView addBookListTableView:self];
-	// Do any additional setup after loading the view.
+ [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(addTableView) name:@"requestFinished" object:nil];
+    //[bookList unarchiveBookListArray];
+
 }
 
 - (void)didReceiveMemoryWarning
