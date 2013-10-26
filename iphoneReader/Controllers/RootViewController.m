@@ -35,9 +35,12 @@
 {
     [super viewDidLoad];
      bookList = [[BookList alloc]init];
-    [bookList getURLInBackground];
+    if ([bookList unarchiveBookListArray])
+        [self addTableView];
+    else
+        [bookList getURLInBackground];
  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(addTableView) name:@"requestFinished" object:nil];
-    //[bookList unarchiveBookListArray];
+    
 
 }
 

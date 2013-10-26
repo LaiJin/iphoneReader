@@ -37,6 +37,8 @@
     ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
     [request setDelegate:self];
     [request startAsynchronous];
+
+
     
     
 }
@@ -53,8 +55,7 @@
         [bookListArray addObject:indexBook];
     }
     [[NSNotificationCenter defaultCenter] postNotificationName:@"requestFinished" object:nil];
-    NSLog(@"%@",bookListArray);
-    //[self archiveBookListArray];
+    [self archiveBookListArray];
     
 }
 
@@ -65,24 +66,26 @@
     
 }
 
-//- (void)archiveBookListArray{
-//    
-//    [NSKeyedArchiver archiveRootObject:bookListArray toFile:[self booklistPath]];
-//   
-//}
-//
-//- (void)unarchiveBookListArray{
-//    
-//    if ([[NSFileManager defaultManager] fileExistsAtPath: [self booklistPath]])
-//        bookListArray = [NSKeyedUnarchiver unarchiveObjectWithFile:[self booklistPath]];
-//}
-//
-//- (NSString *)booklistPath{
-//    
-//    NSString *bookListFilePath =  [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
-//    bookListFilePath= [bookListFilePath stringByAppendingPathComponent:@"bookList.plist"];
-//    return bookListFilePath;
-//}
+- (void)archiveBookListArray{
+    
+    [NSKeyedArchiver archiveRootObject:bookListArray toFile:[self booklistPath]];
+   
+}
+
+- (BOOL)unarchiveBookListArray{
+    
+    if ([[NSFileManager defaultManager] fileExistsAtPath: [self booklistPath]])
+        bookListArray = [NSKeyedUnarchiver unarchiveObjectWithFile:[self booklistPath]];
+    if (bookListArray == nil) return NO;
+    return YES;
+}
+
+- (NSString *)booklistPath{
+    
+    NSString *bookListFilePath =  [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+    bookListFilePath= [bookListFilePath stringByAppendingPathComponent:@"bookList.plist"];
+    return bookListFilePath;
+}
 
 
 

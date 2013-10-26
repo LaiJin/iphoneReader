@@ -22,7 +22,7 @@
 
 
 - (void)getURLInBackground ;
-//- (void)unarchiveBookListArray;
+- (BOOL)unarchiveBookListArray;
 - (NSInteger)countOfBookListArray;
 - (NSString *)bookTitle :(NSInteger)indexPathRow;
 - (NSString *)bookAuthor :(NSInteger)indexPathRow;
