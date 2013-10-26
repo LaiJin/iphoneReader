@@ -8,8 +8,6 @@
 
 #import "RootViewController.h"
 #import "OCMapper.h"
-#import "BookList.h"
-#import "BookList.h"
 #import "Book.h"
 #import "Tags.h"
 
@@ -31,7 +29,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    BookList *bookList = [[BookList alloc]init];
+     bookList = [[BookList alloc]init];
     [bookList getURLInBackground:self];
 	// Do any additional setup after loading the view.
 }
@@ -49,12 +47,12 @@
     NSError *error = [request error];
     NSDictionary *jsonDictionary = [NSJSONSerialization JSONObjectWithData:responseData options:0 error:&error];
     NSArray *booksArray = [jsonDictionary objectForKey:@"books"];
+    NSMutableArray *bookListArray = [[NSMutableArray alloc]init];
     for (int i = 0; i < [booksArray count]; i++) {
         Book *indexBook = [Book objectFromDictionary: [booksArray objectAtIndex:i]];
-        Tags *tags = [indexBook.tags objectAtIndex:0];
-        NSLog(@"%@",tags.name);
-        NSLog(@"%@",indexBook.images);
+        [bookListArray addObject:indexBook];
     }
+    [bookList getBookListArray:bookListArray];
     
 }
 -(void)requestFailed :(ASIHTTPRequest *)request{

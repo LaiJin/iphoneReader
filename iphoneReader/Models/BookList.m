@@ -15,7 +15,7 @@
 
 
 //异步请求
--(void)getURLInBackground :(RootViewController *)rootViewController{
+-(void)getURLInBackground :(UIViewController *)rootViewController{
     
     NSURL *url = [NSURL URLWithString:@"https://api.douban.com/v2/book/search?tag=computer"];
     ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
@@ -23,6 +23,12 @@
     [request startAsynchronous];
     
     
+}
+
+-(void)getBookListArray:(NSMutableArray *)bookListMutableArray{
+    
+    bookListArray = [NSArray arrayWithArray:bookListMutableArray];
+    NSLog(@"%@",bookListArray);
 }
 
 

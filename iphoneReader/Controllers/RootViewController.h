@@ -8,8 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import "ASIHTTPRequest.h"
+#import "BookList.h"
 
-@interface RootViewController : UIViewController<ASIHTTPRequestDelegate>
+@interface RootViewController : UIViewController<ASIHTTPRequestDelegate>{
+    
+    BookList *bookList;
+}
 
 
 

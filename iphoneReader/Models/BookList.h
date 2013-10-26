@@ -7,17 +7,21 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "RootViewController.h"
 
 
-@interface BookList : NSObject
+
+@interface BookList : NSObject{
+    
+    NSArray *bookListArray;
+    
+}
     
     
     
 
 
--(void)getURLInBackground :(RootViewController *)rootViewController;
-
+-(void)getURLInBackground :(UIViewController *)rootViewController;
+-(void)getBookListArray :(NSMutableArray *)bookListMutableArray;
 
 
 @end
