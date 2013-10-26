@@ -8,8 +8,11 @@
 
 #import "RootViewController.h"
 #import "OCMapper.h"
+#import "BookList.h"
+#import "BookList.h"
 #import "Book.h"
 #import "Tags.h"
+
 @interface RootViewController ()
 
 @end
@@ -28,7 +31,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self getURLInBackground];
+    BookList *bookList = [[BookList alloc]init];
+    [bookList getURLInBackground:self];
 	// Do any additional setup after loading the view.
 }
 
@@ -38,16 +42,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-//异步请求
--(void)getURLInBackground{
-    
-    NSURL *url = [NSURL URLWithString:@"https://api.douban.com/v2/book/search?tag=computer"];
-    ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
-    [request setDelegate:self];
-    [request startAsynchronous];
-    
-    
-}
 
 - (void)requestFinished:(ASIHTTPRequest *)request{
 

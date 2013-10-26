@@ -7,7 +7,17 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "RootViewController.h"
+
 
 @interface BookList : NSObject
+    
+    
+    
+
+
+-(void)getURLInBackground :(RootViewController *)rootViewController;
+
+
 
 @end
