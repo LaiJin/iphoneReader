@@ -25,6 +25,7 @@
 		9A5925D5181916C800CE1206 /* Image.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A5925D4181916C800CE1206 /* Image.m */; };
 		9A5925D81819189200CE1206 /* Rating.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A5925D71819189200CE1206 /* Rating.m */; };
 		9A5925DB181922B100CE1206 /* Tags.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A5925DA181922B100CE1206 /* Tags.m */; };
+		9A85A9D0181B5F2900FDB0BF /* BookList.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A85A9CF181B5F2900FDB0BF /* BookList.m */; };
 		9AF78430181AA1580056DB62 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AF7842F181AA1580056DB62 /* RootViewController.m */; };
 		F84FA6A54C87468A87FC2FC9 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 645EA8F5B25044A1B88D39F5 /* libPods.a */; };
 /* End PBXBuildFile section */
@@ -58,6 +59,8 @@
 		9A5925D71819189200CE1206 /* Rating.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Rating.m; sourceTree = "<group>"; };
 		9A5925D9181922B100CE1206 /* Tags.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tags.h; sourceTree = "<group>"; };
 		9A5925DA181922B100CE1206 /* Tags.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tags.m; sourceTree = "<group>"; };
+		9A85A9CE181B5F2900FDB0BF /* BookList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookList.h; sourceTree = "<group>"; };
+		9A85A9CF181B5F2900FDB0BF /* BookList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookList.m; sourceTree = "<group>"; };
 		9AF7842E181AA1580056DB62 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		9AF7842F181AA1580056DB62 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -179,6 +182,15 @@
 			name = TagsModel;
 			sourceTree = "<group>";
 		};
+		9A85A9D1181B5F3A00FDB0BF /* BookListModel */ = {
+			isa = PBXGroup;
+			children = (
+				9A85A9CE181B5F2900FDB0BF /* BookList.h */,
+				9A85A9CF181B5F2900FDB0BF /* BookList.m */,
+			);
+			name = BookListModel;
+			sourceTree = "<group>";
+		};
 		9AB0E7571817AF3700166BDB /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -186,6 +198,7 @@
 				9A5925DD181922E900CE1206 /* ImageModel */,
 				9A5925DE1819241B00CE1206 /* RatingModel */,
 				9A5925E01819244900CE1206 /* TagsModel */,
+				9A85A9D1181B5F3A00FDB0BF /* BookListModel */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -313,6 +326,7 @@
 				9A5925D81819189200CE1206 /* Rating.m in Sources */,
 				9A5925DB181922B100CE1206 /* Tags.m in Sources */,
 				9AF78430181AA1580056DB62 /* RootViewController.m in Sources */,
+				9A85A9D0181B5F2900FDB0BF /* BookList.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
