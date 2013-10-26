@@ -31,8 +31,8 @@
     [super viewDidLoad];
      bookList = [[BookList alloc]init];
     [bookList getURLInBackground:self];
-    booklistTableView = [[BookListTableView alloc]init];
     [bookList unarchiveBookListArray];
+    booklistTableView = [[BookListTableView alloc]init];
     [booklistTableView addBookListTableView:self];
 	// Do any additional setup after loading the view.
 }
@@ -79,7 +79,7 @@
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:booklistCellIdentifier];
     }
     cell.textLabel.text = [bookList bookTitle:indexPath.row];
-    
+    cell.detailTextLabel.text = [bookList bookAuthor:indexPath.row];
     return cell;
 }
 

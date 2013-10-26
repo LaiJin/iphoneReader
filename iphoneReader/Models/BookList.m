@@ -60,6 +60,7 @@
 
 - (void)unarchiveBookListArray{
     
+    if ([[NSFileManager defaultManager] fileExistsAtPath:[self booklistFilePath]])
     bookListArray = [NSKeyedUnarchiver unarchiveObjectWithFile:[self booklistFilePath]];
 }
 
@@ -70,4 +71,11 @@
     return indexBook.title;
 }
 
+- (NSString *)bookAuthor :(NSInteger)indexPathRow{
+    
+    if ([indexBook.author count] != 0)
+        return [indexBook.author objectAtIndex:0];
+    return nil;
+
+}
 @end

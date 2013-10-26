@@ -23,8 +23,9 @@
 
 - (void)getURLInBackground :(UIViewController *)rootViewController;
 - (void)archiveBookListArray :(NSMutableArray *)bookListMutableArray;
+- (void)unarchiveBookListArray;
 - (NSInteger)countOfBookListArray;
 - (NSString *)bookTitle :(NSInteger)indexPathRow;
-- (void)unarchiveBookListArray;
+- (NSString *)bookAuthor :(NSInteger)indexPathRow;
 
 @end
