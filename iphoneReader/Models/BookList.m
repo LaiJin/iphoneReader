@@ -45,8 +45,13 @@
     NSString *bookListFilePath =  [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
     bookListFilePath= [bookListFilePath stringByAppendingPathComponent:@"bookList.plist"];
     NSLog(@"%@",bookListFilePath);
-    [NSKeyedArchiver archiveRootObject:bookListArray toFile:bookListFilePath];
-    NSLog(@"%@",bookListArray);
+    if ([[NSFileManager defaultManager] fileExistsAtPath:bookListFilePath]) {
+        
+        [NSKeyedArchiver archiveRootObject:bookListArray toFile:bookListFilePath];
+        NSArray *unarchiverBookList = [NSKeyedUnarchiver unarchiveObjectWithFile:bookListFilePath];
+        NSLog(@"%@",unarchiverBookList);
+
+    }
     
 }
 
