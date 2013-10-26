@@ -11,7 +11,21 @@
 
 @implementation BookList
 
+-(void)encodeWithCoder:(NSCoder *)aCoder{
+    
+    [aCoder encodeObject:bookListArray forKey:@"bookList"];
+    
+}
 
+-(id)initWithCoder:(NSCoder *)aDecoder{
+    
+    self = [super init];
+    if (self) {
+        
+        bookListArray = [aDecoder decodeObjectForKey:@"bookList"];
+    }
+    return self;
+}
 
 
 //异步请求
@@ -28,8 +42,10 @@
 -(void)getBookListArray:(NSMutableArray *)bookListMutableArray{
     
     bookListArray = [NSArray arrayWithArray:bookListMutableArray];
-    NSString *bookListFilePath =  [NSSearchPathForDirectoriesInDomains(NSDocumentationDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+    NSString *bookListFilePath =  [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
     bookListFilePath= [bookListFilePath stringByAppendingPathComponent:@"bookList.plist"];
+    NSLog(@"%@",bookListFilePath);
+    [NSKeyedArchiver archiveRootObject:bookListArray toFile:bookListFilePath];
     NSLog(@"%@",bookListArray);
     
 }

@@ -10,7 +10,7 @@
 
 
 
-@interface BookList : NSObject{
+@interface BookList : NSObject<NSCoding>{
     
     NSArray *bookListArray;
     
