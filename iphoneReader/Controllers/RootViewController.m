@@ -7,9 +7,7 @@
 //
 
 #import "RootViewController.h"
-#import "OCMapper.h"
-#import "Book.h"
-#import "Tags.h"
+
 
 @interface RootViewController ()
 
@@ -30,8 +28,8 @@
 {
     [super viewDidLoad];
      bookList = [[BookList alloc]init];
-    [bookList getURLInBackground:self];
-    [bookList unarchiveBookListArray];
+    [bookList getURLInBackground];
+    //[bookList unarchiveBookListArray];
     booklistTableView = [[BookListTableView alloc]init];
     [booklistTableView addBookListTableView:self];
 	// Do any additional setup after loading the view.
@@ -44,27 +42,7 @@
 }
 
 
-- (void)requestFinished:(ASIHTTPRequest *)request{
 
-    NSData *responseData = [request responseData];
-    NSError *error = [request error];
-    NSDictionary *jsonDictionary = [NSJSONSerialization JSONObjectWithData:responseData options:0 error:&error];
-    NSArray *booksArray = [jsonDictionary objectForKey:@"books"];
-    NSMutableArray *bookListArray = [[NSMutableArray alloc]init];
-    for (int i = 0; i < [booksArray count]; i++) {
-        Book *indexBook = [Book objectFromDictionary: [booksArray objectAtIndex:i]];
-        [bookListArray addObject:indexBook];
-    }
-    [bookList archiveBookListArray:bookListArray];
-    
-}
-
-- (void)requestFailed :(ASIHTTPRequest *)request{
-    
-    NSError *error = [request error];
-    NSLog(@"%@",error);
-    
-}
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     

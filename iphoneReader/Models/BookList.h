@@ -8,11 +8,11 @@
 
 #import <Foundation/Foundation.h>
 #import "Book.h"
+#import "ASIHTTPRequest.h"
 
-
-@interface BookList : NSObject<NSCoding>{
+@interface BookList : NSObject<NSCoding,ASIHTTPRequestDelegate>{
     
-    NSArray *bookListArray;
+    NSMutableArray *bookListArray;
     Book *indexBook;
     
 }
@@ -21,8 +21,7 @@
     
 
 
-- (void)getURLInBackground :(UIViewController *)rootViewController;
-- (void)archiveBookListArray :(NSMutableArray *)bookListMutableArray;
+- (void)getURLInBackground ;
 - (void)unarchiveBookListArray;
 - (NSInteger)countOfBookListArray;
 - (NSString *)bookTitle :(NSInteger)indexPathRow;

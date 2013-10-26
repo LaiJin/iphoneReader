@@ -7,11 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ASIHTTPRequest.h"
 #import "BookList.h"
 #import "BookListTableView.h"
 
-@interface RootViewController : UIViewController<ASIHTTPRequestDelegate,UITableViewDataSource,UITableViewDelegate>{
+@interface RootViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>{
     
     BookList *bookList;
     BookListTableView *booklistTableView;
