@@ -28,7 +28,10 @@
 -(void)getBookListArray:(NSMutableArray *)bookListMutableArray{
     
     bookListArray = [NSArray arrayWithArray:bookListMutableArray];
+    NSString *bookListFilePath =  [NSSearchPathForDirectoriesInDomains(NSDocumentationDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+    bookListFilePath= [bookListFilePath stringByAppendingPathComponent:@"bookList.plist"];
     NSLog(@"%@",bookListArray);
+    
 }
 
 
