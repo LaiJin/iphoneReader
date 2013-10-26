@@ -29,7 +29,7 @@
     [super viewDidLoad];
      bookList = [[BookList alloc]init];
     [bookList getURLInBackground];
-    //[bookList unarchiveBookListArray];
+    [bookList unarchiveBookListArray];
     booklistTableView = [[BookListTableView alloc]init];
     [booklistTableView addBookListTableView:self];
 	// Do any additional setup after loading the view.

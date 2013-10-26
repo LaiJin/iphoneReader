@@ -66,17 +66,17 @@
 
 - (void)archiveBookListArray{
     
-    if ([[NSFileManager defaultManager] fileExistsAtPath:[self booklistFilePath]])
-        [NSKeyedArchiver archiveRootObject:bookListArray toFile:[self booklistFilePath]];
+    [NSKeyedArchiver archiveRootObject:bookListArray toFile:[self booklistPath]];
+   
 }
 
 - (void)unarchiveBookListArray{
     
-    if ([[NSFileManager defaultManager] fileExistsAtPath:[self booklistFilePath]])
-        bookListArray = [NSKeyedUnarchiver unarchiveObjectWithFile:[self booklistFilePath]];
+    if ([[NSFileManager defaultManager] fileExistsAtPath: [self booklistPath]])
+        bookListArray = [NSKeyedUnarchiver unarchiveObjectWithFile:[self booklistPath]];
 }
 
-- (NSString *)booklistFilePath{
+- (NSString *)booklistPath{
     
     NSString *bookListFilePath =  [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
     bookListFilePath= [bookListFilePath stringByAppendingPathComponent:@"bookList.plist"];
@@ -96,7 +96,7 @@
 
     
 - (NSString *)bookTitle :(NSInteger)indexPathRow{
-    [self unarchiveBookListArray];
+    
     indexBook = [bookListArray objectAtIndex:indexPathRow];
     return indexBook.title;
 }
