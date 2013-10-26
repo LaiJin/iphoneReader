@@ -7,9 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "RootViewController.h"
 
 @interface BookListTableView : UIView
 
-- (void)addBookListTableView :(UITableViewController *)rootViewController;
+- (void)addBookListTableView :(RootViewController *)rootViewController;
 
 @end

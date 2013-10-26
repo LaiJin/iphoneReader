@@ -8,12 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "BookList.h"
-#import "BookListTableView.h"
 
 @interface RootViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>{
     
     BookList *bookList;
-    BookListTableView *booklistTableView;
     
 }
 

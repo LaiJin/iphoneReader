@@ -7,7 +7,7 @@
 //
 
 #import "RootViewController.h"
-
+#import "BookListTableView.h"
 
 @interface RootViewController ()
 
@@ -30,7 +30,7 @@
      bookList = [[BookList alloc]init];
     [bookList getURLInBackground];
     [bookList unarchiveBookListArray];
-    booklistTableView = [[BookListTableView alloc]init];
+    BookListTableView *booklistTableView = [[BookListTableView alloc]init];
     [booklistTableView addBookListTableView:self];
 	// Do any additional setup after loading the view.
 }

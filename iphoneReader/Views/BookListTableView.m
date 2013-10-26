@@ -20,7 +20,7 @@
 }
 
 
--(void)addBookListTableView:(UITableViewController *)rootViewController{
+-(void)addBookListTableView:(RootViewController *)rootViewController{
     
     UITableView *bookListTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, 320, 480) style:UITableViewStylePlain];
     bookListTableView.dataSource = rootViewController;
