@@ -9,7 +9,6 @@
 #import "RootViewController.h"
 #import "BookListTableView.h"
 #import "BookListTableViewCell.h"
-#import "EGOCache.h"
 
 @interface RootViewController ()
 
