@@ -9,7 +9,7 @@
 #import "RootViewController.h"
 #import "BookListTableView.h"
 #import "BookListTableViewCell.h"
-
+#import "EGOCache.h"
 
 @interface RootViewController ()
 
@@ -40,7 +40,7 @@
     //if ([bookList unarchiveBookListArray])
         //[self addTableView];
     //else
-        [bookList getURLInBackground];
+    [bookList getURLInBackground :@"php"];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(addTableView) name:@"requestFinished" object:nil];
     
 

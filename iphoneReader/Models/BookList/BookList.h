@@ -20,7 +20,7 @@
     
 
 
-- (void)getURLInBackground ;
+- (void)getURLInBackground :(NSString *)bookType;
 - (BOOL)unarchiveBookListArray;
 - (Book *)indexBookModel :(NSInteger)index;
 - (NSInteger)countOfBookListArray;

@@ -22,7 +22,7 @@
 
 -(void)addBookListTableView:(RootViewController *)rootViewController{
     
-    UITableView *bookListTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, 320, 480) style:UITableViewStylePlain];
+    UITableView *bookListTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, 320, 415) style:UITableViewStylePlain];
     bookListTableView.dataSource = rootViewController;
     bookListTableView.delegate = rootViewController;
     [rootViewController.view addSubview:bookListTableView];

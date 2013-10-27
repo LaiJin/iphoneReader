@@ -30,9 +30,10 @@
 
 
 //异步请求
-- (void)getURLInBackground {
+- (void)getURLInBackground :(NSString *)bookType{
     
-    NSURL *url = [NSURL URLWithString:@"https://api.douban.com/v2/book/search?tag=ios"];
+    NSString *bookUrl = [NSString stringWithFormat:@"https://api.douban.com/v2/book/search?tag=%@",bookType];
+    NSURL *url = [NSURL URLWithString:bookUrl];
     ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
     [request setDelegate:self];
     [request startAsynchronous];
