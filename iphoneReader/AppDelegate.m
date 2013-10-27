@@ -26,7 +26,7 @@
     RootViewController *rootViewController = [[RootViewController alloc]init];
     self.navigationController = [[UINavigationController alloc]initWithRootViewController:rootViewController];
     self.navigationController.navigationBar.tintColor = [UIColor blackColor];
-    [self.window addSubview:self.navigationController.view];
+    self.window.rootViewController = self.navigationController;
     [self.window makeKeyAndVisible];
     return YES;
 }
