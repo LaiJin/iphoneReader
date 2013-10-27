@@ -102,13 +102,16 @@
 - (NSString *)bookTitle :(NSInteger)indexPathRow{
     
     indexBook = [bookListArray objectAtIndex:indexPathRow];
-    return indexBook.title;
+    NSString *bookTitle = [NSString stringWithFormat:@"书名:%@",indexBook.title];
+    return bookTitle;
 }
 
 - (NSString *)bookAuthor :(NSInteger)indexPathRow{
     
-    if ([indexBook.author count] != 0)
-        return [indexBook.author objectAtIndex:0];
+    if ([indexBook.author count] != 0){
+        NSString *bookAuthor = [NSString stringWithFormat:@"作者:%@",[indexBook.author objectAtIndex:0]];
+        return bookAuthor;
+    }
     return nil;
 
 }
