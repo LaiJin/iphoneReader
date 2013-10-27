@@ -8,6 +8,8 @@
 
 #import "RootViewController.h"
 #import "BookListTableView.h"
+#import "BookListTableViewCell.h"
+
 
 @interface RootViewController ()
 
@@ -61,20 +63,20 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     static NSString *booklistCellIdentifier = @"booklistCellIdentifier";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:booklistCellIdentifier];
+    BookListTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:booklistCellIdentifier];
     if (cell == nil) {
-        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:booklistCellIdentifier];
+        cell = [[BookListTableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:booklistCellIdentifier];
     }
-    cell.textLabel.font = [UIFont boldSystemFontOfSize:15];
-    cell.detailTextLabel.font = [UIFont boldSystemFontOfSize:15];
-    cell.textLabel.text = [bookList bookTitle:indexPath.row];
-    cell.detailTextLabel.text = [bookList bookAuthor:indexPath.row];
+    Book *indexBook = [bookList indexBookModel:indexPath.row];
+    [cell getBookTitleLabelText:indexBook.title];
+    [cell getBookAuthorLabelText:indexBook.author];
+    [cell getImageViewUrl:indexBook.image];
     return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    return 100;
+    return 120;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{

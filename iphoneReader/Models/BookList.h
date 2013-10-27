@@ -13,18 +13,17 @@
 @interface BookList : NSObject<NSCoding,ASIHTTPRequestDelegate>{
     
     NSMutableArray *bookListArray;
-    Book *indexBook;
     
-}
-    
+}    
+
 
     
 
 
 - (void)getURLInBackground ;
 - (BOOL)unarchiveBookListArray;
+- (Book *)indexBookModel :(NSInteger)index;
 - (NSInteger)countOfBookListArray;
-- (NSString *)bookTitle :(NSInteger)indexPathRow;
-- (NSString *)bookAuthor :(NSInteger)indexPathRow;
+
 
 @end

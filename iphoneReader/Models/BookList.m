@@ -7,7 +7,6 @@
 //
 
 #import "BookList.h"
-#import "ASIHTTPRequest.h"
 #import "OCMapper.h"
 #import "Tags.h"
 
@@ -51,11 +50,12 @@
     NSArray *booksArray = [jsonDictionary objectForKey:@"books"];
     bookListArray = [[NSMutableArray alloc]init];
     for (int i = 0; i < [booksArray count]; i++) {
-        indexBook = [Book objectFromDictionary: [booksArray objectAtIndex:i]];
+        Book *indexBook = [Book objectFromDictionary: [booksArray objectAtIndex:i]];
         [bookListArray addObject:indexBook];
     }
     [[NSNotificationCenter defaultCenter] postNotificationName:@"requestFinished" object:nil];
     [self archiveBookListArray];
+    
     
 }
 
@@ -97,24 +97,14 @@
 }
 
 
-
+- (Book *)indexBookModel:(NSInteger)index{
     
-- (NSString *)bookTitle :(NSInteger)indexPathRow{
+    return [bookListArray objectAtIndex:index];
     
-    indexBook = [bookListArray objectAtIndex:indexPathRow];
-    NSString *bookTitle = [NSString stringWithFormat:@"书名:%@",indexBook.title];
-    return bookTitle;
 }
-
-- (NSString *)bookAuthor :(NSInteger)indexPathRow{
     
-    if ([indexBook.author count] != 0){
-        NSString *bookAuthor = [NSString stringWithFormat:@"作者:%@",[indexBook.author objectAtIndex:0]];
-        return bookAuthor;
-    }
-    return nil;
 
-}
+
 
 
 @end
