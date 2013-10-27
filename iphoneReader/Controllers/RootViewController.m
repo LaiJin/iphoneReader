@@ -65,6 +65,8 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:booklistCellIdentifier];
     }
+    cell.textLabel.font = [UIFont boldSystemFontOfSize:15];
+    cell.detailTextLabel.font = [UIFont boldSystemFontOfSize:15];
     cell.textLabel.text = [bookList bookTitle:indexPath.row];
     cell.detailTextLabel.text = [bookList bookAuthor:indexPath.row];
     return cell;
