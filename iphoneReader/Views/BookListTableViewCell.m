@@ -60,4 +60,10 @@
     else
         bookAuthorLabel.text = nil;
 }
+
+
+- (void)imageViewLoadedImage:(EGOImageView *)imageView{
+    
+    
+}
 @end
