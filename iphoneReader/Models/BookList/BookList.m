@@ -83,7 +83,7 @@
 
 - (NSString *)booklistPath{
     
-    NSString *bookListFilePath =  [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+    NSString *bookListFilePath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
     bookListFilePath= [bookListFilePath stringByAppendingPathComponent:@"bookList.plist"];
     return bookListFilePath;
 }

@@ -12,12 +12,12 @@
 
 @interface BookList : NSObject<NSCoding,ASIHTTPRequestDelegate>{
     
+    @private
     NSMutableArray *bookListArray;
     
 }    
 
 
-    
 
 
 - (void)getURLInBackground :(NSString *)bookType;
