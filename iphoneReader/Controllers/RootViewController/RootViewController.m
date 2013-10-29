@@ -56,10 +56,15 @@
 - (void)addTableView
 {
     
-    UITableView *bookListTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, 320, 415) style:UITableViewStylePlain];
+    PullTableView *bookListTableView = [[PullTableView alloc]initWithFrame:CGRectMake(0, 0, 320, 415) style:UITableViewStylePlain pullDownRefresh:YES pullUpLoadMore:YES];
+    //PullTableView *bookListTableView = [[PullTableView alloc]initWithFrame:CGRectMake(0, 0, 320, 415) style:UITableViewStylePlain];
+    bookListTableView.pullArrowImage = [UIImage imageNamed:@"blackArrow"];
+    bookListTableView.pullBackgroundColor = [UIColor yellowColor];
+    bookListTableView.pullDelegate = self;
     bookListTableView.dataSource = self;
     bookListTableView.delegate = self;
     [self.view addSubview:bookListTableView];
+    
     
 }
 
@@ -115,13 +120,13 @@
 #pragma mark PullTableViewDelegate
 - (void)pullTableViewDidTriggerRefresh:(PullTableView *)pullTableView
 {
-    
+    [bookList getURLInBackground:@"php"];
 }
 
 
 - (void)pullTableViewDidTriggerLoadMore:(PullTableView *)pullTableView
 {
-    
+    [bookList getURLInBackground:@"ios"];
 }
 
 
