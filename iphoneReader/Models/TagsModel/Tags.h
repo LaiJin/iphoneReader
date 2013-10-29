@@ -10,8 +10,10 @@
 
 @interface Tags : NSObject<NSCoding>
 
+
 @property (strong,nonatomic) NSNumber *count;
 @property (strong,nonatomic) NSString *name;
 @property (strong,nonatomic) NSString *title;
+
 
 @end

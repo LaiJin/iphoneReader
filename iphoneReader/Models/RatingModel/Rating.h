@@ -10,9 +10,11 @@
 
 @interface Rating : NSObject<NSCoding>
 
+
 @property (strong, nonatomic) NSNumber *average;
 @property (strong, nonatomic) NSNumber *max;
 @property (strong, nonatomic) NSNumber *min;
 @property (strong, nonatomic) NSNumber *numRaters;
+
 
 @end

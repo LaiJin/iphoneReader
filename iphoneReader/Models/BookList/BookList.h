@@ -15,8 +15,7 @@
     @private
     NSMutableArray *bookListArray;
     
-}    
-
+}
 
 
 

@@ -14,10 +14,13 @@
     EGOImageView *imageView;
     UILabel *bookTitleLabel;
     UILabel *bookAuthorLabel;
+    
 }
+
 
 - (void)getImageViewUrl :(NSString *)url;
 - (void)getBookTitleLabelText :(NSString *)title;
 - (void)getBookAuthorLabelText :(NSMutableArray *)author;
+
 
 @end

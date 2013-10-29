@@ -17,80 +17,108 @@
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
+    
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
     }
     return self;
+
 }
 
 
-- (void)addTableView{
-    
+
+- (void)addTableView
+{
+
     UITableView *bookListTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, 320, 415) style:UITableViewStylePlain];
     bookListTableView.dataSource = self;
     bookListTableView.delegate = self;
     [self.view addSubview:bookListTableView];
-    
+
 }
+
 
 
 - (void)viewDidLoad
 {
+    
     [super viewDidLoad];
      bookList = [[BookList alloc]init];
     //if ([bookList unarchiveBookListArray])
         //[self addTableView];
     //else
-    [bookList getURLInBackground :@"php"];
+    [bookList getURLInBackground :@"ios"];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(addTableView) name:@"requestFinished" object:nil];
-    
 
 }
+
+
 
 - (void)didReceiveMemoryWarning
 {
+    
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+
 }
 
 
 
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
     
     return [bookList countOfBookListArray];
+    
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
     
     static NSString *booklistCellIdentifier = @"booklistCellIdentifier";
     BookListTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:booklistCellIdentifier];
     if (cell == nil) {
         cell = [[BookListTableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:booklistCellIdentifier];
     }
+    
     Book *indexBook = [bookList indexBookModel:indexPath.row];
     [cell getBookTitleLabelText:indexBook.title];
     [cell getBookAuthorLabelText:indexBook.author];
     [cell getImageViewUrl:indexBook.image];
     
     return cell;
+
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
     
     return 120;
+    
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
 }
 
-- (void)dealloc{
+
+
+- (void)dealloc
+{
     
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"requestFinished" object:nil];
+    
 }
+
 
 
 @end

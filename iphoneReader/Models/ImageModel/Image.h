@@ -10,6 +10,7 @@
 
 @interface Image : NSObject<NSCoding>
 
+
 @property (strong, nonatomic) NSString *large;
 @property (strong, nonatomic) NSString *medium;
 @property (strong, nonatomic) NSString *small;

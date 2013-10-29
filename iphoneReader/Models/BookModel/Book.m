@@ -10,7 +10,9 @@
 
 @implementation Book
 
-- (void)encodeWithCoder:(NSCoder *)aCoder{
+
+- (void)encodeWithCoder:(NSCoder *)aCoder
+{
     
     [aCoder encodeObject:self.alt forKey:@"book_alt"];
     [aCoder encodeObject:self.alt_title forKey:@"book_alt_title"];
@@ -35,12 +37,16 @@
     [aCoder encodeObject:self.translator forKey:@"book_translator"];
     [aCoder encodeObject:self.images forKey:@"book_images"];
     [aCoder encodeObject:self.rating forKey:@"book_rating"];
+
 }
 
-- (id)initWithCoder:(NSCoder *)aDecoder{
+
+- (id)initWithCoder:(NSCoder *)aDecoder
+{
     
     self = [super init];
-    if (self) {
+    if (self)
+    {
         self.alt = [aDecoder decodeObjectForKey: @"book_alt"];
         self.alt_title = [aDecoder decodeObjectForKey: @"book_alt_title"];
         self.author_intro = [aDecoder decodeObjectForKey: @"book_author_intro"];
@@ -66,6 +72,8 @@
         self.rating = [aDecoder decodeObjectForKey: @"book_rating"];
     }
     return self;
+
 }
+
 
 @end

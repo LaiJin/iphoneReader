@@ -10,41 +10,46 @@
 
 @implementation BookListTableViewCell
 
+
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
+    
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
-    if (self) {
-       
+    if (self)
+    {
         imageView = [[EGOImageView alloc]initWithPlaceholderImage:[UIImage imageNamed:@"placeholder.png"]];
         imageView.delegate = self;
         imageView.frame = CGRectMake(10, 10, 80, 100);
         bookTitleLabel = [[UILabel alloc]initWithFrame:CGRectMake(100, 10, 220, 36)];
         bookAuthorLabel = [[UILabel alloc]initWithFrame:CGRectMake(100,50, 220, 36)];
-        //bookAuthorLabel.backgroundColor = [UIColor blackColor];
-        //bookTitleLabel.backgroundColor = [UIColor redColor];
-        //imageView.backgroundColor = [UIColor blackColor];
         [self.contentView addSubview:imageView];
         [self addSubview:bookTitleLabel];
         [self addSubview:bookAuthorLabel];
     }
     return self;
+    
 }
+
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
 {
+    
     [super setSelected:selected animated:animated];
     // Configure the view for the selected state
+    
 }
 
 
-
-- (void)getImageViewUrl :(NSString *)url{
+- (void)getImageViewUrl :(NSString *)url
+{
     
     imageView.imageURL = [NSURL URLWithString:url];
     
 }
 
-- (void)getBookTitleLabelText :(NSString *)title{
+
+- (void)getBookTitleLabelText :(NSString *)title
+{
     
     bookTitleLabel.font = [UIFont boldSystemFontOfSize:15];
     //bookTitleLabel.numberOfLines = 2;
@@ -52,18 +57,23 @@
     
 }
 
-- (void)getBookAuthorLabelText :(NSMutableArray *)author{
+
+- (void)getBookAuthorLabelText :(NSMutableArray *)author
+{
     
     bookAuthorLabel.font = [UIFont boldSystemFontOfSize:15];
     if ([author count] != 0)
         bookAuthorLabel.text = [NSString stringWithFormat:@"作者:%@",[author objectAtIndex :0]];
     else
         bookAuthorLabel.text = nil;
+    
 }
 
 
-- (void)imageViewLoadedImage:(EGOImageView *)imageView{
-    
-    
+- (void)imageViewLoadedImage:(EGOImageView *)imageView
+{
+
 }
+
+
 @end
