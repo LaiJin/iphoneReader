@@ -54,7 +54,6 @@
 {
     
     bookTitleLabel.font = [UIFont boldSystemFontOfSize:15];
-    //bookTitleLabel.numberOfLines = 2;
     bookTitleLabel.text = [NSString stringWithFormat:@"书名:%@",title];
     
 }
