@@ -9,6 +9,7 @@
 #import "RootViewController.h"
 #import "BookListTableViewCell.h"
 
+
 @interface RootViewController ()
 
 @end
@@ -106,6 +107,20 @@
 {
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+}
+
+
+#pragma mark -
+#pragma mark PullTableViewDelegate
+- (void)pullTableViewDidTriggerRefresh:(PullTableView *)pullTableView
+{
+    
+}
+
+
+- (void)pullTableViewDidTriggerLoadMore:(PullTableView *)pullTableView
+{
     
 }
 

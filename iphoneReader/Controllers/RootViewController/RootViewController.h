@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "BookList.h"
+#import "PullTableView.h"
 
-@interface RootViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>{
+@interface RootViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,PullTableViewDelegate>{
     
     BookList *bookList;
     
