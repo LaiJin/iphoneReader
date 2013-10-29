@@ -7,7 +7,6 @@
 //
 
 #import "RootViewController.h"
-#import "BookListTableView.h"
 #import "BookListTableViewCell.h"
 
 @interface RootViewController ()
@@ -28,10 +27,14 @@
 
 - (void)addTableView{
     
-    BookListTableView *booklistTableView = [[BookListTableView alloc]init];
-    [booklistTableView addBookListTableView:self];
+    UITableView *bookListTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, 320, 415) style:UITableViewStylePlain];
+    bookListTableView.dataSource = self;
+    bookListTableView.delegate = self;
+    [self.view addSubview:bookListTableView];
     
 }
+
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -70,6 +73,7 @@
     [cell getBookTitleLabelText:indexBook.title];
     [cell getBookAuthorLabelText:indexBook.author];
     [cell getImageViewUrl:indexBook.image];
+    
     return cell;
 }
 

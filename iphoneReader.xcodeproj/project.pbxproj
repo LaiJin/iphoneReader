@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9A19EF62181D12D400D191BE /* BookListTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A19EF5E181D12D400D191BE /* BookListTableView.m */; };
 		9A19EF63181D12D400D191BE /* BookListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A19EF61181D12D400D191BE /* BookListTableViewCell.m */; };
 		9A19EF70181D12E100D191BE /* BookList.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A19EF66181D12E100D191BE /* BookList.m */; };
 		9A19EF71181D12E100D191BE /* Book.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A19EF69181D12E100D191BE /* Book.m */; };
@@ -36,8 +35,6 @@
 /* Begin PBXFileReference section */
 		05E665F09D7D486BB0B043B5 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		645EA8F5B25044A1B88D39F5 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		9A19EF5D181D12D400D191BE /* BookListTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookListTableView.h; sourceTree = "<group>"; };
-		9A19EF5E181D12D400D191BE /* BookListTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookListTableView.m; sourceTree = "<group>"; };
 		9A19EF60181D12D400D191BE /* BookListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookListTableViewCell.h; sourceTree = "<group>"; };
 		9A19EF61181D12D400D191BE /* BookListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookListTableViewCell.m; sourceTree = "<group>"; };
 		9A19EF65181D12E100D191BE /* BookList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookList.h; sourceTree = "<group>"; };
@@ -93,15 +90,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		9A19EF5C181D12D400D191BE /* BookListTableView */ = {
-			isa = PBXGroup;
-			children = (
-				9A19EF5D181D12D400D191BE /* BookListTableView.h */,
-				9A19EF5E181D12D400D191BE /* BookListTableView.m */,
-			);
-			path = BookListTableView;
-			sourceTree = "<group>";
-		};
 		9A19EF5F181D12D400D191BE /* BookListTableViewCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -258,7 +246,6 @@
 		9AB0E7591817AF3700166BDB /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				9A19EF5C181D12D400D191BE /* BookListTableView */,
 				9A19EF5F181D12D400D191BE /* BookListTableViewCell */,
 			);
 			path = Views;
@@ -367,7 +354,6 @@
 			files = (
 				9A477209181673F800088FAC /* main.m in Sources */,
 				9A47720D181673F800088FAC /* AppDelegate.m in Sources */,
-				9A19EF62181D12D400D191BE /* BookListTableView.m in Sources */,
 				9A19EF63181D12D400D191BE /* BookListTableViewCell.m in Sources */,
 				9A19EF70181D12E100D191BE /* BookList.m in Sources */,
 				9A19EF71181D12E100D191BE /* Book.m in Sources */,
