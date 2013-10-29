@@ -40,6 +40,8 @@
 }
 
 
+#pragma mark -
+#pragma mark Public Methods
 - (void)getImageViewUrl :(NSString *)url
 {
     
@@ -69,7 +71,8 @@
     
 }
 
-
+#pragma mark -
+#pragma mark EGOImageViewDelegate
 - (void)imageViewLoadedImage:(EGOImageView *)imageView
 {
 

@@ -14,6 +14,8 @@
 @implementation BookList
 
 
+#pragma mark -
+#pragma mark NSCoding
 - (void)encodeWithCoder:(NSCoder *)aCoder
 {
     
@@ -32,7 +34,9 @@
     
 }
 
-//异步请求
+
+#pragma mark -
+#pragma mark Public Method
 - (void)getURLInBackground :(NSString *)bookType
 {
     
@@ -42,9 +46,11 @@
     [request setDelegate:self];
     [request startAsynchronous];
 
-}
+}//异步请求
 
 
+#pragma mark -
+#pragma mark ASIHTTPRequestDelegate
 - (void)requestFinished:(ASIHTTPRequest *)request
 {
     
@@ -74,6 +80,8 @@
 }
 
 
+#pragma mark -
+#pragma mark Private Methods
 - (void)archiveBookListArray
 {
     
@@ -93,6 +101,8 @@
 }
 
 
+#pragma mark -
+#pragma mark Public Methods
 - (NSString *)booklistPath
 {
     
