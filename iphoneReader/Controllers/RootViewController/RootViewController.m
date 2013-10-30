@@ -57,7 +57,6 @@
 {
     
     PullTableView *bookListTableView = [[PullTableView alloc]initWithFrame:CGRectMake(0, 0, 320, 415) style:UITableViewStylePlain pullDownRefresh:YES pullUpLoadMore:YES];
-    //PullTableView *bookListTableView = [[PullTableView alloc]initWithFrame:CGRectMake(0, 0, 320, 415) style:UITableViewStylePlain];
     bookListTableView.pullArrowImage = [UIImage imageNamed:@"blackArrow"];
     bookListTableView.pullBackgroundColor = [UIColor yellowColor];
     bookListTableView.pullDelegate = self;

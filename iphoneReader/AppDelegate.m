@@ -25,7 +25,7 @@
 	[[ObjectMapper sharedInstance] setMappingProvider:self.inCodeMappingProvider];
     [self.inCodeMappingProvider mapFromDictionaryKey:@"id" toPropertyKey:@"book_id"forClass:[Book class]];//如果设置book的属性值和网页上的key不同的时候，可以用写这句代码让它识别。
     RootViewController *rootViewController = [[RootViewController alloc]init];
-    self.navigationController = [[UINavigationController alloc]initWithRootViewController:rootViewController];
+    self.navigationController = [[UINavigationController alloc]initWithRootViewController:  rootViewController];
     self.navigationController.navigationBar.tintColor = [UIColor blackColor];
     self.window.rootViewController = self.navigationController;
     [self.window makeKeyAndVisible];
