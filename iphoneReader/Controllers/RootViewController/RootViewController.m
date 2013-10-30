@@ -37,7 +37,7 @@
     [super viewWillAppear:animated];
     if(!bookListTableView.pullTableIsRefreshing) {
         bookListTableView.pullTableIsRefreshing = YES;
-        [self performSelector:@selector(refreshTable) withObject:nil afterDelay:3];
+        [self performSelector:@selector(refreshTableView) withObject:nil afterDelay:3];
     }
     
 }
@@ -49,7 +49,6 @@
     [super viewDidLoad];
     i = 4;
      bookList = [[BookList alloc]init];
-    [bookList requestURL:@"php"];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(addTableView) name:@"requestFinished" object:nil];
 
 }
@@ -80,7 +79,7 @@
 }
 
 
-- (void)refreshTable
+- (void)refreshTableView
 {
     [bookList requestURL:@"php"];
     bookListTableView.pullLastRefreshDate = [NSDate date];
@@ -89,7 +88,7 @@
 }
 
 
-- (void)loadMoreDataToTable
+- (void)loadMoreDataToTableView
 {
     
     if (i < [bookList countOfBookListArray]) i = i+4;
@@ -150,7 +149,7 @@
 - (void)pullTableViewDidTriggerRefresh:(PullTableView *)pullTableView
 {
     
-    [self performSelector:@selector(refreshTable) withObject:nil afterDelay:3.0f];
+    [self performSelector:@selector(refreshTableView) withObject:nil afterDelay:3.0f];
     
 }
 
@@ -158,7 +157,7 @@
 - (void)pullTableViewDidTriggerLoadMore:(PullTableView *)pullTableView
 {
     
-    [self performSelector:@selector(loadMoreDataToTable) withObject:nil afterDelay:3.0f];
+    [self performSelector:@selector(loadMoreDataToTableView) withObject:nil afterDelay:3.0f];
 
 }
 
