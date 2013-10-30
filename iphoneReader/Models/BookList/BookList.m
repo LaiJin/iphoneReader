@@ -37,7 +37,7 @@
 
 #pragma mark -
 #pragma mark Public Method
-- (void)getURLInBackground :(NSString *)bookType
+- (void)requestURL:(NSString *)bookType
 {
     
     NSString *bookUrl = [NSString stringWithFormat:@"https://api.douban.com/v2/book/search?tag=%@",bookType];
@@ -127,6 +127,8 @@
     return [bookListArray objectAtIndex:index];
     
 }
+
+
 
 
 

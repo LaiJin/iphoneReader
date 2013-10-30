@@ -11,7 +11,9 @@
 
 
 @interface RootViewController ()
-
+{
+    NSInteger i;
+}
 @end
 
 
@@ -30,12 +32,24 @@
 }
 
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    if(!bookListTableView.pullTableIsRefreshing) {
+        bookListTableView.pullTableIsRefreshing = YES;
+        [self performSelector:@selector(refreshTable) withObject:nil afterDelay:3];
+    }
+    
+}
+
+
 - (void)viewDidLoad
 {
     
     [super viewDidLoad];
+    i = 4;
      bookList = [[BookList alloc]init];
-    [bookList getURLInBackground :@"ios"];
+    [bookList requestURL:@"php"];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(addTableView) name:@"requestFinished" object:nil];
 
 }
@@ -56,14 +70,31 @@
 - (void)addTableView
 {
     
-    PullTableView *bookListTableView = [[PullTableView alloc]initWithFrame:CGRectMake(0, 0, 320, 415) style:UITableViewStylePlain pullDownRefresh:YES pullUpLoadMore:YES];
-    bookListTableView.pullArrowImage = [UIImage imageNamed:@"blackArrow"];
-    bookListTableView.pullBackgroundColor = [UIColor yellowColor];
+    bookListTableView = [[PullTableView alloc]initWithFrame:CGRectMake(0, 0, 320, 415) style:UITableViewStylePlain pullDownRefresh:YES pullUpLoadMore:YES];
+    bookListTableView.pullArrowImage = [UIImage imageNamed:@"blueArrow"];
     bookListTableView.pullDelegate = self;
     bookListTableView.dataSource = self;
     bookListTableView.delegate = self;
     [self.view addSubview:bookListTableView];
     
+}
+
+
+- (void)refreshTable
+{
+    [bookList requestURL:@"php"];
+    bookListTableView.pullLastRefreshDate = [NSDate date];
+    bookListTableView.pullTableIsRefreshing = NO;
+    
+}
+
+
+- (void)loadMoreDataToTable
+{
+    
+    if (i < [bookList countOfBookListArray]) i = i+4;
+    [bookListTableView reloadData];
+    bookListTableView.pullTableIsLoadingMore = NO;
     
 }
 
@@ -73,7 +104,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     
-    return [bookList countOfBookListArray];
+    return i;
     
 }
 
@@ -86,12 +117,11 @@
     if (cell == nil) {
         cell = [[BookListTableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:booklistCellIdentifier];
     }
-    
+
     Book *indexBook = [bookList indexBookModel:indexPath.row];
     [cell getBookTitleLabelText:indexBook.title];
     [cell getBookAuthorLabelText:indexBook.author];
     [cell getImageViewUrl:indexBook.image];
-    
     return cell;
 
 }
@@ -119,14 +149,21 @@
 #pragma mark PullTableViewDelegate
 - (void)pullTableViewDidTriggerRefresh:(PullTableView *)pullTableView
 {
-    [bookList getURLInBackground:@"php"];
+    
+    [self performSelector:@selector(refreshTable) withObject:nil afterDelay:3.0f];
+    
 }
 
 
 - (void)pullTableViewDidTriggerLoadMore:(PullTableView *)pullTableView
 {
-    [bookList getURLInBackground:@"ios"];
+    
+    [self performSelector:@selector(loadMoreDataToTable) withObject:nil afterDelay:3.0f];
+
 }
+
+
+
 
 
 #pragma mark -

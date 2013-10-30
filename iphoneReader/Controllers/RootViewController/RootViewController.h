@@ -13,6 +13,7 @@
 @interface RootViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,PullTableViewDelegate>{
     
     BookList *bookList;
+    PullTableView *bookListTableView;
     
 }
 

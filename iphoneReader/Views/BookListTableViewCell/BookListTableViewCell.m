@@ -75,6 +75,8 @@
 #pragma mark EGOImageViewDelegate
 - (void)imageViewLoadedImage:(EGOImageView *)imageView
 {
+    
+    
 
 }
 

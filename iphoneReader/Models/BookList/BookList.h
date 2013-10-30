@@ -19,9 +19,9 @@
 
 
 
-- (void)getURLInBackground :(NSString *)bookType;
+- (void)requestURL:(NSString *)bookType;
 - (BOOL)unarchiveBookListArray;
-- (Book *)indexBookModel :(NSInteger)index;
+- (Book *)indexBookModel:(NSInteger)index;
 - (NSInteger)countOfBookListArray;
 
 
