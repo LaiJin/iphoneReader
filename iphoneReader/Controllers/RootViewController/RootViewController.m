@@ -32,12 +32,23 @@
 }
 
 
+- (id)init
+{
+    self = [super init];
+    if (self) {
+        i = 4;
+        bookList = [[BookList alloc]init];
+    }
+    return self;
+}
+
+
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
     if(!bookListTableView.pullTableIsRefreshing) {
         bookListTableView.pullTableIsRefreshing = YES;
-        [self performSelector:@selector(refreshTableView) withObject:nil afterDelay:3];
+        [self performSelector:@selector(refreshTableView) withObject:nil afterDelay:3.0f];
     }
     
 }
@@ -47,12 +58,9 @@
 {
     
     [super viewDidLoad];
-    i = 4;
-     bookList = [[BookList alloc]init];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(addTableView) name:@"requestFinished" object:nil];
 
 }
-
 
 
 - (void)didReceiveMemoryWarning
@@ -70,7 +78,6 @@
 {
     
     bookListTableView = [[PullTableView alloc]initWithFrame:CGRectMake(0, 0, 320, 415) style:UITableViewStylePlain pullDownRefresh:YES pullUpLoadMore:YES];
-    bookListTableView.pullArrowImage = [UIImage imageNamed:@"blueArrow"];
     bookListTableView.pullDelegate = self;
     bookListTableView.dataSource = self;
     bookListTableView.delegate = self;
@@ -81,7 +88,8 @@
 
 - (void)refreshTableView
 {
-    [bookList requestURL:@"php"];
+    
+    [bookList requestURL:@"ios"];
     bookListTableView.pullLastRefreshDate = [NSDate date];
     bookListTableView.pullTableIsRefreshing = NO;
     
@@ -160,9 +168,6 @@
     [self performSelector:@selector(loadMoreDataToTableView) withObject:nil afterDelay:3.0f];
 
 }
-
-
-
 
 
 #pragma mark -
