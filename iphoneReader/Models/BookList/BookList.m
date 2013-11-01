@@ -67,6 +67,7 @@
     
     [[NSNotificationCenter defaultCenter] postNotificationName:@"requestFinished" object:nil];
     [self archiveBookListArray];
+    [self unarchiveBookListArray];
 
 }
 
@@ -95,7 +96,7 @@
     
     if ([[NSFileManager defaultManager] fileExistsAtPath: [self booklistPath]])
         bookListArray = [NSKeyedUnarchiver unarchiveObjectWithFile:[self booklistPath]];
-    return bookListArray == nil;
+    else return bookListArray == nil;
     return YES;
 
 }

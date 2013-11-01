@@ -50,7 +50,7 @@
     [super viewWillAppear:animated];
     if(!bookListTableView.pullTableIsRefreshing) {
         bookListTableView.pullTableIsRefreshing = YES;
-        [self performSelector:@selector(refreshTableView) withObject:nil afterDelay:3.0f];
+        [self performSelector:@selector(refreshTableView) withObject:nil afterDelay:2.0f];
     }
     
 }
@@ -92,7 +92,7 @@
 - (void)refreshTableView
 {
     
-    [bookList requestURL:@"ios"];
+    [bookList requestURL:@"php"];
     bookListTableView.pullLastRefreshDate = [NSDate date];
     bookListTableView.pullTableIsRefreshing = NO;
     
@@ -165,7 +165,7 @@
 - (void)pullTableViewDidTriggerRefresh:(PullTableView *)pullTableView
 {
     
-    [self performSelector:@selector(refreshTableView) withObject:nil afterDelay:3.0f];
+    [self performSelector:@selector(refreshTableView) withObject:nil afterDelay:2.0f];
     
 }
 
@@ -173,7 +173,7 @@
 - (void)pullTableViewDidTriggerLoadMore:(PullTableView *)pullTableView
 {
     
-    [self performSelector:@selector(loadMoreDataToTableView) withObject:nil afterDelay:3.0f];
+    [self performSelector:@selector(loadMoreDataToTableView) withObject:nil afterDelay:2.0f];
 
 }
 
