@@ -18,6 +18,7 @@
 
 
 
+- (BOOL)unarchiveBookListArray;
 - (void)setBookListArray:(NSMutableArray *)booksArray;
 - (Book *)indexBookModel:(NSInteger)index;
 - (NSInteger)countOfBookListArray;

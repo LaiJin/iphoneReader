@@ -86,6 +86,7 @@
     bookListTableView.dataSource = self;
     bookListTableView.delegate = self;
     [self.view addSubview:bookListTableView];
+    [bookList unarchiveBookListArray];
     count = [bookList countOfBookListArray] - [bookList countOfBookListArray] % displayBooksCount;
     
 }

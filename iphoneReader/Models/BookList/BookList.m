@@ -35,26 +35,6 @@
 
 #pragma mark -
 #pragma mark Private Methods
-- (BOOL)unarchiveBookListArray
-{
-    
-    if ([[NSFileManager defaultManager] fileExistsAtPath: [self booklistPath]])
-        bookListArray = [NSKeyedUnarchiver unarchiveObjectWithFile:[self booklistPath]];
-    else return bookListArray == nil;
-    return YES;
-
-}
-
-
-- (void)setBookListArray:(NSMutableArray *)booksArray
-{
-    
-    bookListArray = [[NSMutableArray alloc]initWithArray:booksArray];
-    [NSKeyedArchiver archiveRootObject:bookListArray toFile:[self booklistPath]];
-    
-}
-
-
 - (NSString *)booklistPath
 {
     
@@ -67,9 +47,31 @@
 
 #pragma mark -
 #pragma mark Public Methods
+- (void)setBookListArray:(NSMutableArray *)booksArray
+{
+    
+    bookListArray = [[NSMutableArray alloc]initWithArray:booksArray];
+    [NSKeyedArchiver archiveRootObject:bookListArray toFile:[self booklistPath]];
+    
+}
+
+
+
+- (BOOL)unarchiveBookListArray
+{
+    
+    if ([[NSFileManager defaultManager] fileExistsAtPath: [self booklistPath]])
+        bookListArray = [NSKeyedUnarchiver unarchiveObjectWithFile:[self booklistPath]];
+    else return bookListArray == nil;
+    return YES;
+    
+}
+
+
+
 - (NSInteger)countOfBookListArray
 {
-    [self unarchiveBookListArray];
+    
     return [bookListArray count];
     
 }
