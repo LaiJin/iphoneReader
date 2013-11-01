@@ -95,7 +95,7 @@
     
     if ([[NSFileManager defaultManager] fileExistsAtPath: [self booklistPath]])
         bookListArray = [NSKeyedUnarchiver unarchiveObjectWithFile:[self booklistPath]];
-    if (bookListArray == nil) return NO;
+    return bookListArray == nil;
     return YES;
 
 }

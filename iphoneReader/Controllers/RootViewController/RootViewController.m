@@ -12,8 +12,10 @@
 
 @interface RootViewController ()
 {
-    NSInteger i;
+    NSInteger displayBooksCount;
+    NSInteger count;
 }
+
 @end
 
 
@@ -36,8 +38,8 @@
 {
     self = [super init];
     if (self) {
-        i = 4;
         bookList = [[BookList alloc]init];
+        displayBooksCount = 6;
     }
     return self;
 }
@@ -82,6 +84,7 @@
     bookListTableView.dataSource = self;
     bookListTableView.delegate = self;
     [self.view addSubview:bookListTableView];
+    count = [bookList countOfBookListArray] - [bookList countOfBookListArray] % displayBooksCount;
     
 }
 
@@ -99,7 +102,12 @@
 - (void)loadMoreDataToTableView
 {
     
-    if (i < [bookList countOfBookListArray]) i = i+4;
+    if ([bookList countOfBookListArray] <= displayBooksCount)
+        displayBooksCount = [bookList countOfBookListArray];
+    else if (count == displayBooksCount)
+        displayBooksCount = [bookList countOfBookListArray];
+    else
+        displayBooksCount += 6;
     [bookListTableView reloadData];
     bookListTableView.pullTableIsLoadingMore = NO;
     
@@ -111,7 +119,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     
-    return i;
+    return displayBooksCount;
     
 }
 
