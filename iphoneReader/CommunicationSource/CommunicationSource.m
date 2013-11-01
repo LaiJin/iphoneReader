@@ -56,7 +56,7 @@
 {
     
     NSError *error = [request error];
-    NSLog(@"%@",error);
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"requestFailed" object:error];
     
 }
 
