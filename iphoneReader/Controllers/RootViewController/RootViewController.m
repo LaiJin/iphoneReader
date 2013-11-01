@@ -22,6 +22,7 @@
 
 @implementation RootViewController
 
+#define firstDisplayBooks 6
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -41,7 +42,7 @@
     if (self) {
         bookList = [[BookList alloc]init];
         communicationSource = [[CommunicationSource alloc]init];
-        displayBooksCount = 6;
+        displayBooksCount = firstDisplayBooks;
     }
     return self;
 }
@@ -111,7 +112,7 @@
     else if (count == displayBooksCount)
         displayBooksCount = [bookList countOfBookListArray];
     else
-        displayBooksCount += 6;
+        displayBooksCount += firstDisplayBooks;
     [bookListTableView reloadData];
     bookListTableView.pullTableIsLoadingMore = NO;
     
@@ -123,6 +124,7 @@
     
     UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"提示" message:@"请您检查网络是否正常" delegate:nil cancelButtonTitle:nil otherButtonTitles:@"确定", nil];
     [alertView show];
+    
 
 }
 
