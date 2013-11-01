@@ -52,7 +52,7 @@
     [super viewWillAppear:animated];
     if(!bookListTableView.pullTableIsRefreshing) {
         bookListTableView.pullTableIsRefreshing = YES;
-        [self performSelector:@selector(refreshTableView) withObject:nil afterDelay:1.0f];
+        [self performSelector:@selector(refreshTableView) withObject:nil afterDelay:2.0f];
     }
     
 }
@@ -79,13 +79,10 @@
 
 #pragma mark -
 #pragma mark Private Methods
-
-
 - (void)determineWhetherAddTableView
 {
     
-    
-    if ([bookList countOfBookListArray] == 0)
+    if (![bookList countOfBookListArray])
         [self addTableView];
     [bookList unarchiveBookListArray];
     count = [bookList countOfBookListArray] - [bookList countOfBookListArray] % firstDisplayBooks;
@@ -135,6 +132,7 @@
     
     UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"提示" message:@"请您检查网络是否正常" delegate:nil cancelButtonTitle:nil otherButtonTitles:@"确定", nil];
     [alertView show];
+    [self addTableView];
     
 
 }
@@ -145,7 +143,10 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     
-    return displayBooksCount;
+    if (![bookList countOfBookListArray])
+        return 0;
+    else
+        return displayBooksCount;
     
 }
 
@@ -164,7 +165,7 @@
     [cell getBookAuthorLabelText:indexBook.author];
     [cell getImageViewUrl:indexBook.image];
     return cell;
-
+    
 }
 
 
@@ -211,6 +212,7 @@
     
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"requestFinished" object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"requestFailed" object:nil];
+    
 }
 
 
