@@ -10,6 +10,7 @@
 #import "BookListTableViewCell.h"
 
 
+
 @interface RootViewController ()
 {
     NSInteger displayBooksCount;
@@ -39,6 +40,7 @@
     self = [super init];
     if (self) {
         bookList = [[BookList alloc]init];
+        communicationSource = [[CommunicationSource alloc]init];
         displayBooksCount = 6;
     }
     return self;
@@ -91,8 +93,8 @@
 
 - (void)refreshTableView
 {
-    
-    [bookList requestURL:@"php"];
+
+    [communicationSource requestURL:@"ios"];
     bookListTableView.pullLastRefreshDate = [NSDate date];
     bookListTableView.pullTableIsRefreshing = NO;
     

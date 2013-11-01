@@ -7,7 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "ASIHTTPRequest.h"
 
-@interface CommunicationSource : NSObject
+@interface CommunicationSource : NSObject<ASIHTTPRequestDelegate>
+
+
+- (void)requestURL:(NSString *)bookType;
 
 @end

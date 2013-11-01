@@ -9,10 +9,12 @@
 #import <UIKit/UIKit.h>
 #import "BookList.h"
 #import "PullTableView.h"
+#import "CommunicationSource.h"
 
 @interface RootViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,PullTableViewDelegate>{
     
     BookList *bookList;
+    CommunicationSource *communicationSource;
     PullTableView *bookListTableView;
     
 }

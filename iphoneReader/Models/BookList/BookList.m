@@ -7,8 +7,6 @@
 //
 
 #import "BookList.h"
-#import "OCMapper.h"
-#import "Tags.h"
 
 
 @implementation BookList
@@ -36,61 +34,7 @@
 
 
 #pragma mark -
-#pragma mark Public Method
-- (void)requestURL:(NSString *)bookType
-{
-    
-    NSString *bookUrl = [NSString stringWithFormat:@"https://api.douban.com/v2/book/search?tag=%@",bookType];
-    NSURL *url = [NSURL URLWithString:bookUrl];
-    ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
-    [request setDelegate:self];
-    [request startAsynchronous];
-
-}//异步请求
-
-
-#pragma mark -
-#pragma mark ASIHTTPRequestDelegate
-- (void)requestFinished:(ASIHTTPRequest *)request
-{
-    
-    NSData *responseData = [request responseData];
-    NSError *error = [request error];
-    NSDictionary *jsonDictionary = [NSJSONSerialization JSONObjectWithData:responseData options:0 error:&error];
-    NSArray *booksArray = [jsonDictionary objectForKey:@"books"];
-    bookListArray = [[NSMutableArray alloc]init];
-    
-    for (int i = 0; i < [booksArray count]; i++) {
-        Book *indexBook = [Book objectFromDictionary: [booksArray objectAtIndex:i]];
-        [bookListArray addObject:indexBook];
-    }
-    
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"requestFinished" object:nil];
-    [self archiveBookListArray];
-    [self unarchiveBookListArray];
-
-}
-
-
-- (void)requestFailed :(ASIHTTPRequest *)request
-{
-    
-    NSError *error = [request error];
-    NSLog(@"%@",error);
-
-}
-
-
-#pragma mark -
 #pragma mark Private Methods
-- (void)archiveBookListArray
-{
-    
-    [NSKeyedArchiver archiveRootObject:bookListArray toFile:[self booklistPath]];
-   
-}
-
-
 - (BOOL)unarchiveBookListArray
 {
     
@@ -102,8 +46,15 @@
 }
 
 
-#pragma mark -
-#pragma mark Public Methods
+- (void)setBookListArray:(NSMutableArray *)booksArray
+{
+    
+    bookListArray = [[NSMutableArray alloc]initWithArray:booksArray];
+    [NSKeyedArchiver archiveRootObject:bookListArray toFile:[self booklistPath]];
+    
+}
+
+
 - (NSString *)booklistPath
 {
     
@@ -114,9 +65,11 @@
 }
 
 
+#pragma mark -
+#pragma mark Public Methods
 - (NSInteger)countOfBookListArray
 {
-    
+    [self unarchiveBookListArray];
     return [bookListArray count];
     
 }

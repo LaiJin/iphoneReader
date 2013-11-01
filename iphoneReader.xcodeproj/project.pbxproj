@@ -205,8 +205,8 @@
 		9A477202181673F800088FAC /* iphoneReader */ = {
 			isa = PBXGroup;
 			children = (
-				9A545ABA18237C1D006AF9B2 /* CommunicationSource */,
 				9ADE1C911822A095003A2B2B /* AppDelegate */,
+				9A545ABA18237C1D006AF9B2 /* CommunicationSource */,
 				9AB0E7571817AF3700166BDB /* Models */,
 				9AB0E7591817AF3700166BDB /* Views */,
 				9A19EF78181D133700D191BE /* Controllers */,

@@ -8,9 +8,8 @@
 
 #import <Foundation/Foundation.h>
 #import "Book.h"
-#import "ASIHTTPRequest.h"
 
-@interface BookList : NSObject<NSCoding,ASIHTTPRequestDelegate>{
+@interface BookList : NSObject<NSCoding>{
     
     @private
     NSMutableArray *bookListArray;
@@ -19,8 +18,7 @@
 
 
 
-- (void)requestURL:(NSString *)bookType;
-- (BOOL)unarchiveBookListArray;
+- (void)setBookListArray:(NSMutableArray *)booksArray;
 - (Book *)indexBookModel:(NSInteger)index;
 - (NSInteger)countOfBookListArray;
 
