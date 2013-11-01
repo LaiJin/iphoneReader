@@ -96,7 +96,7 @@
 - (void)refreshTableView
 {
 
-    [communicationSource requestURL:@"english"];
+    [communicationSource requestURL:@"ios"];
     bookListTableView.pullLastRefreshDate = [NSDate date];
     bookListTableView.pullTableIsRefreshing = NO;
     
@@ -197,7 +197,7 @@
 {
     
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"requestFinished" object:nil];
-    
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"requestFailed" object:nil];
 }
 
 
