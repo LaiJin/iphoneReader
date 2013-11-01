@@ -23,7 +23,6 @@
 @implementation RootViewController
 
 #define firstDisplayBooks 6
-
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     
@@ -53,7 +52,7 @@
     [super viewWillAppear:animated];
     if(!bookListTableView.pullTableIsRefreshing) {
         bookListTableView.pullTableIsRefreshing = YES;
-        [self performSelector:@selector(refreshTableView) withObject:nil afterDelay:2.0f];
+        [self performSelector:@selector(refreshTableView) withObject:nil afterDelay:1.0f];
     }
     
 }
@@ -63,7 +62,7 @@
 {
     
     [super viewDidLoad];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(addTableView) name:@"requestFinished" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(determineWhetherAddTableView) name:@"requestFinished" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(requestFailureWarning:) name:@"requestFailed" object:nil];
 
 }
@@ -80,6 +79,20 @@
 
 #pragma mark -
 #pragma mark Private Methods
+
+
+- (void)determineWhetherAddTableView
+{
+    
+    
+    if ([bookList countOfBookListArray] == 0)
+        [self addTableView];
+    [bookList unarchiveBookListArray];
+    count = [bookList countOfBookListArray] - [bookList countOfBookListArray] % firstDisplayBooks;
+    
+}
+
+
 - (void)addTableView
 {
     
@@ -88,8 +101,6 @@
     bookListTableView.dataSource = self;
     bookListTableView.delegate = self;
     [self.view addSubview:bookListTableView];
-    [bookList unarchiveBookListArray];
-    count = [bookList countOfBookListArray] - [bookList countOfBookListArray] % displayBooksCount;
     
 }
 
@@ -180,7 +191,7 @@
 - (void)pullTableViewDidTriggerRefresh:(PullTableView *)pullTableView
 {
     
-    [self performSelector:@selector(refreshTableView) withObject:nil afterDelay:2.0f];
+    [self performSelector:@selector(refreshTableView) withObject:nil afterDelay:3.0f];
     
 }
 
@@ -188,7 +199,7 @@
 - (void)pullTableViewDidTriggerLoadMore:(PullTableView *)pullTableView
 {
     
-    [self performSelector:@selector(loadMoreDataToTableView) withObject:nil afterDelay:2.0f];
+    [self performSelector:@selector(loadMoreDataToTableView) withObject:nil afterDelay:3.0f];
 
 }
 
