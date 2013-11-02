@@ -18,6 +18,7 @@
     self = [super init];
     if (self) {
         self.communtcation = [[CommunicationSource alloc]init];
+        self.communtcation.communicationDelegate = self;
     }
     return self;
     
@@ -29,7 +30,7 @@
 - (void)encodeWithCoder:(NSCoder *)aCoder
 {
     
-    [aCoder encodeObject:bookListArray forKey:@"bookList"];
+    [aCoder encodeObject:self.bookListArray forKey:@"bookList"];
     
 }
 
@@ -39,7 +40,7 @@
     
     self = [super init];
     if (self){
-        bookListArray = [aDecoder decodeObjectForKey:@"bookList"];
+        self.bookListArray = [aDecoder decodeObjectForKey:@"bookList"];
     }
     return self;
     
@@ -63,7 +64,9 @@
 - (void)parseComplete:(NSMutableArray *)books
 {
     
-    bookListArray = [NSMutableArray arrayWithArray:books];
+    self.bookListArray = [NSMutableArray arrayWithArray:books];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"parseComplete" object:nil];
+    [NSKeyedArchiver archiveRootObject:self.bookListArray toFile:[self booklistPath]];
     
 }
 
@@ -83,9 +86,9 @@
 {
     
     if ([[NSFileManager defaultManager] fileExistsAtPath: [self booklistPath]])
-        bookListArray = [NSKeyedUnarchiver unarchiveObjectWithFile:[self booklistPath]];
+        self.bookListArray = [NSKeyedUnarchiver unarchiveObjectWithFile:[self booklistPath]];
     else
-        return bookListArray == nil;
+        return self.bookListArray == nil;
     return YES;
     
 }
@@ -95,7 +98,7 @@
 - (NSInteger)countOfBookListArray
 {
     
-    return [bookListArray count];
+    return [self.bookListArray count];
     
 }
 
@@ -103,7 +106,7 @@
 - (Book *)indexBookModel:(NSInteger)index
 {
     
-    return [bookListArray objectAtIndex:index];
+    return [self.bookListArray objectAtIndex:index];
     
 }
 

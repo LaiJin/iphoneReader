@@ -10,15 +10,12 @@
 #import "Book.h"
 #import "CommunicationSource.h"
 
-@interface BookList : NSObject<NSCoding,CommunicationDelegate>{
-    
-    @private
-    NSMutableArray *bookListArray;
-    
-}
+@interface BookList : NSObject<NSCoding,CommunicationDelegate>
 
 
+@property (strong, nonatomic) NSMutableArray *bookListArray;
 @property (strong, nonatomic) CommunicationSource *communtcation;
+
 
 - (void)request:(NSString *)bookSpecies;
 

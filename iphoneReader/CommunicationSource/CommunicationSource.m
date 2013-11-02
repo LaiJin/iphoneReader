@@ -45,7 +45,6 @@
     }
     
     [self.communicationDelegate parseComplete:books];
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"requestFinished" object:nil];
     
 }
 

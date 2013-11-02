@@ -81,9 +81,9 @@
 - (void)determineWhetherAddTableView
 {
     
-    if (![bookList countOfBookListArray])
+    if ([bookList countOfBookListArray])
         [self addTableView];
-    [bookList unarchiveBookListArray];
+    //[bookList unarchiveBookListArray];
     count = [bookList countOfBookListArray] - [bookList countOfBookListArray] % firstDisplayBooks;
     bookListTableView.pullLastRefreshDate = [NSDate date];
     bookListTableView.pullTableIsRefreshing = NO;
