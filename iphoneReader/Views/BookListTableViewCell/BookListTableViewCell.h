@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "EGOImageView.h"
 
-@interface BookListTableViewCell : UITableViewCell<EGOImageViewDelegate>{
+@interface BookListTableViewCell : UITableViewCell{
     
     EGOImageView *imageView;
     UILabel *bookTitleLabel;

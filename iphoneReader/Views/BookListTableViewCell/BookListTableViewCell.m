@@ -18,7 +18,6 @@
     if (self)
     {
         imageView = [[EGOImageView alloc]initWithPlaceholderImage:[UIImage imageNamed:@"placeholder.png"]];
-        imageView.delegate = self;
         imageView.frame = CGRectMake(10, 10, 80, 100);
         bookTitleLabel = [[UILabel alloc]initWithFrame:CGRectMake(100, 10, 220, 36)];
         bookAuthorLabel = [[UILabel alloc]initWithFrame:CGRectMake(100,50, 220, 36)];
@@ -69,16 +68,5 @@
         bookAuthorLabel.text = nil;
     
 }
-
-
-#pragma mark -
-#pragma mark EGOImageViewDelegate
-- (void)imageViewLoadedImage:(EGOImageView *)imageView
-{
-    
-    
-
-}
-
 
 @end

@@ -65,7 +65,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(bookListModelChange) name:@"parseComplete" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(requestFailureWarning:) name:@"requestFailed" object:nil];
     [self addTableView];
-
+    
 }
 
 
@@ -106,8 +106,8 @@
 
 - (void)refreshTableView
 {
-
-    [bookList request:@"ios"];
+    
+    [bookList request:@"php"];
     
 }
 
@@ -130,7 +130,7 @@
 - (void)requestFailureWarning:(NSNotification *)notification
 {
     
-    UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"提示" message:@"请您检查网络是否正常" delegate:nil cancelButtonTitle:nil otherButtonTitles:@"确定", nil];
+    UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"请求失败" message:@"请您检查网络" delegate:nil cancelButtonTitle:nil otherButtonTitles:@"确定", nil];
     [alertView show];
     bookListTableView.pullTableIsRefreshing = NO;
     
@@ -199,7 +199,7 @@
 {
     
     [self performSelector:@selector(loadMoreDataToTableView) withObject:nil afterDelay:3.0f];
-
+    
 }
 
 
