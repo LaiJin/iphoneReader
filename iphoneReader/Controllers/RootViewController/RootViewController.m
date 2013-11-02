@@ -86,6 +86,8 @@
         [self addTableView];
     [bookList unarchiveBookListArray];
     count = [bookList countOfBookListArray] - [bookList countOfBookListArray] % firstDisplayBooks;
+    bookListTableView.pullLastRefreshDate = [NSDate date];
+    bookListTableView.pullTableIsRefreshing = NO;
     
 }
 
@@ -106,8 +108,6 @@
 {
 
     [communicationSource requestURL:@"ios"];
-    bookListTableView.pullLastRefreshDate = [NSDate date];
-    bookListTableView.pullTableIsRefreshing = NO;
     
 }
 
@@ -190,7 +190,7 @@
 - (void)pullTableViewDidTriggerRefresh:(PullTableView *)pullTableView
 {
     
-    [self performSelector:@selector(refreshTableView) withObject:nil afterDelay:3.0f];
+    [self refreshTableView];
     
 }
 
