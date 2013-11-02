@@ -8,11 +8,14 @@
 
 #import <Foundation/Foundation.h>
 #import "ASIHTTPRequest.h"
+#import "CommunicationDelegate.h"
 
 @interface CommunicationSource : NSObject<ASIHTTPRequestDelegate>
 
 
-- (void)requestURL:(NSString *)bookType;
+@property (nonatomic, weak) id<CommunicationDelegate>communicationDelegate;
 
+
+- (void)requestURL:(NSString *)bookURL;
 
 @end

@@ -18,11 +18,10 @@
 
 #pragma mark -
 #pragma mark Public Method
-- (void)requestURL:(NSString *)bookType
+- (void)requestURL:(NSString *)bookURL
 {
     
-    NSString *bookUrl = [NSString stringWithFormat:@"https://api.douban.com/v2/book/search?tag=%@",bookType];
-    NSURL *url = [NSURL URLWithString:bookUrl];
+    NSURL *url = [NSURL URLWithString:bookURL];
     ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
     [request setDelegate:self];
     [request startAsynchronous];
@@ -38,16 +37,15 @@
     NSData *responseData = [request responseData];
     NSDictionary *jsonDictionary = [NSJSONSerialization JSONObjectWithData:responseData options:0 error:nil];
     NSArray *booksArray = [jsonDictionary objectForKey:@"books"];
-    NSMutableArray *bookListArray = [[NSMutableArray alloc]init];
+    NSMutableArray *books = [[NSMutableArray alloc]init];
     
     for (int i = 0; i < [booksArray count]; i++) {
         Book *indexBook = [Book objectFromDictionary: [booksArray objectAtIndex:i]];
-        [bookListArray addObject:indexBook];
+        [books addObject:indexBook];
     }
-    BookList *booList = [[BookList alloc]init];
-    [booList setBookListArray:bookListArray];
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"requestFinished" object:nil];
     
+    [self.communicationDelegate parseComplete:books];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"requestFinished" object:nil];
     
 }
 

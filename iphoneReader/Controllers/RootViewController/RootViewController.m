@@ -40,7 +40,6 @@
     self = [super init];
     if (self) {
         bookList = [[BookList alloc]init];
-        communicationSource = [[CommunicationSource alloc]init];
         displayBooksCount = firstDisplayBooks;
     }
     return self;
@@ -107,7 +106,7 @@
 - (void)refreshTableView
 {
 
-    [communicationSource requestURL:@"ios"];
+    [bookList request:@"php"];
     
 }
 

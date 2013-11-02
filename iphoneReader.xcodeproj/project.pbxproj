@@ -51,6 +51,7 @@
 		9A19EF76181D12EC00D191BE /* Tags.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tags.m; sourceTree = "<group>"; };
 		9A19EF7A181D133700D191BE /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		9A19EF7B181D133700D191BE /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
+		9A1A26F31824DAF1005F3ED4 /* CommunicationDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CommunicationDelegate.h; sourceTree = "<group>"; };
 		9A4771F9181673F800088FAC /* iphoneReader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iphoneReader.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A4771FC181673F800088FAC /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		9A4771FE181673F800088FAC /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -243,6 +244,7 @@
 			children = (
 				9A545ABB18237C48006AF9B2 /* CommunicationSource.h */,
 				9A545ABC18237C48006AF9B2 /* CommunicationSource.m */,
+				9A1A26F31824DAF1005F3ED4 /* CommunicationDelegate.h */,
 			);
 			path = CommunicationSource;
 			sourceTree = "<group>";

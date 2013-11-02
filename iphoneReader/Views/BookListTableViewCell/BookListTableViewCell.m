@@ -63,7 +63,7 @@
 {
     
     bookAuthorLabel.font = [UIFont boldSystemFontOfSize:15];
-    if ([author count] != 0)
+    if ([author count])
         bookAuthorLabel.text = [NSString stringWithFormat:@"作者:%@",[author objectAtIndex :0]];
     else
         bookAuthorLabel.text = nil;

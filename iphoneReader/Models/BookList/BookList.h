@@ -8,8 +8,9 @@
 
 #import <Foundation/Foundation.h>
 #import "Book.h"
+#import "CommunicationSource.h"
 
-@interface BookList : NSObject<NSCoding>{
+@interface BookList : NSObject<NSCoding,CommunicationDelegate>{
     
     @private
     NSMutableArray *bookListArray;
@@ -17,7 +18,10 @@
 }
 
 
-- (void)setBookListArray:(NSMutableArray *)booksArray;
+@property (strong, nonatomic) CommunicationSource *communtcation;
+
+- (void)request:(NSString *)bookSpecies;
+
 - (BOOL)unarchiveBookListArray;
 - (Book *)indexBookModel:(NSInteger)index;
 - (NSInteger)countOfBookListArray;

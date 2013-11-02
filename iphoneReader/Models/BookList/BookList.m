@@ -12,6 +12,18 @@
 @implementation BookList
 
 
+- (id)init
+{
+    
+    self = [super init];
+    if (self) {
+        self.communtcation = [[CommunicationSource alloc]init];
+    }
+    return self;
+    
+}
+
+
 #pragma mark -
 #pragma mark NSCoding
 - (void)encodeWithCoder:(NSCoder *)aCoder
@@ -26,8 +38,9 @@
 {
     
     self = [super init];
-    if (self)
+    if (self){
         bookListArray = [aDecoder decodeObjectForKey:@"bookList"];
+    }
     return self;
     
 }
@@ -46,15 +59,24 @@
 
 
 #pragma mark -
-#pragma mark Public Methods
-- (void)setBookListArray:(NSMutableArray *)booksArray
+#pragma mark CommunicationDelegate
+- (void)parseComplete:(NSMutableArray *)books
 {
     
-    bookListArray = [[NSMutableArray alloc]initWithArray:booksArray];
-    [NSKeyedArchiver archiveRootObject:bookListArray toFile:[self booklistPath]];
+    bookListArray = [NSMutableArray arrayWithArray:books];
     
 }
 
+
+#pragma mark -
+#pragma mark Public Methods
+- (void)request:(NSString *)bookSpecies
+{
+    
+    NSString *bookUrl = [NSString stringWithFormat:@"https://api.douban.com/v2/book/search?tag=%@",bookSpecies];
+    [self.communtcation requestURL:bookUrl];
+    
+}
 
 
 - (BOOL)unarchiveBookListArray
@@ -62,7 +84,8 @@
     
     if ([[NSFileManager defaultManager] fileExistsAtPath: [self booklistPath]])
         bookListArray = [NSKeyedUnarchiver unarchiveObjectWithFile:[self booklistPath]];
-    else return bookListArray == nil;
+    else
+        return bookListArray == nil;
     return YES;
     
 }
