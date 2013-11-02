@@ -14,7 +14,6 @@
 
 
 @property (strong, nonatomic) NSMutableArray *bookListArray;
-@property (strong, nonatomic) CommunicationSource *communtcation;
 
 - (void)request:(NSString *)bookSpecies;
 

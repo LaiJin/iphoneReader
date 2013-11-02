@@ -8,6 +8,12 @@
 
 #import "BookList.h"
 
+@interface BookList ()
+
+@property (strong, nonatomic) CommunicationSource *communtcation;
+
+@end
+
 
 @implementation BookList
 
