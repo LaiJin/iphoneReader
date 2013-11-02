@@ -82,36 +82,16 @@
 }
 
 
-- (BOOL)unarchiveBookListArray
-{
-    
-    if ([[NSFileManager defaultManager] fileExistsAtPath: [self booklistPath]])
-        self.bookListArray = [NSKeyedUnarchiver unarchiveObjectWithFile:[self booklistPath]];
-    else
-        return self.bookListArray == nil;
-    return YES;
-    
-}
-
-
-
-- (NSInteger)countOfBookListArray
-{
-    
-    return [self.bookListArray count];
-    
-}
-
-
-- (Book *)indexBookModel:(NSInteger)index
-{
-    
-    return [self.bookListArray objectAtIndex:index];
-    
-}
-
-
-
+//- (BOOL)unarchiveBookListArray
+//{
+//    
+//    if ([[NSFileManager defaultManager] fileExistsAtPath: [self booklistPath]])
+//        self.bookListArray = [NSKeyedUnarchiver unarchiveObjectWithFile:[self booklistPath]];
+//    else
+//        return self.bookListArray == nil;
+//    return YES;
+//    
+//}
 
 
 @end

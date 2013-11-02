@@ -8,7 +8,6 @@
 
 #import "CommunicationSource.h"
 #import "Book.h"
-#import "BookList.h"
 #import "OCMapper.h"
 
 @implementation CommunicationSource

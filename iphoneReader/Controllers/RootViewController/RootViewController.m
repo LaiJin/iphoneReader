@@ -48,10 +48,11 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    
     [super viewWillAppear:animated];
     if(!bookListTableView.pullTableIsRefreshing) {
         bookListTableView.pullTableIsRefreshing = YES;
-        [self performSelector:@selector(refreshTableView) withObject:nil afterDelay:2.0f];
+        [self refreshTableView];
     }
     
 }
@@ -61,8 +62,9 @@
 {
     
     [super viewDidLoad];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(determineWhetherAddTableView) name:@"requestFinished" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(bookListModelChange) name:@"parseComplete" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(requestFailureWarning:) name:@"requestFailed" object:nil];
+    [self addTableView];
 
 }
 
@@ -78,19 +80,6 @@
 
 #pragma mark -
 #pragma mark Private Methods
-- (void)determineWhetherAddTableView
-{
-    
-    if ([bookList countOfBookListArray])
-        [self addTableView];
-    //[bookList unarchiveBookListArray];
-    count = [bookList countOfBookListArray] - [bookList countOfBookListArray] % firstDisplayBooks;
-    bookListTableView.pullLastRefreshDate = [NSDate date];
-    bookListTableView.pullTableIsRefreshing = NO;
-    
-}
-
-
 - (void)addTableView
 {
     
@@ -103,10 +92,22 @@
 }
 
 
+
+- (void)bookListModelChange
+{
+    
+    count = [bookList.bookListArray count] - [bookList.bookListArray count] % firstDisplayBooks;
+    [bookListTableView reloadData];
+    bookListTableView.pullLastRefreshDate = [NSDate date];
+    bookListTableView.pullTableIsRefreshing = NO;
+    
+}
+
+
 - (void)refreshTableView
 {
 
-    [bookList request:@"php"];
+    [bookList request:@"ios"];
     
 }
 
@@ -114,10 +115,10 @@
 - (void)loadMoreDataToTableView
 {
     
-    if ([bookList countOfBookListArray] <= displayBooksCount)
-        displayBooksCount = [bookList countOfBookListArray];
+    if ([bookList.bookListArray count] <= displayBooksCount)
+        displayBooksCount = [bookList.bookListArray count];
     else if (count == displayBooksCount)
-        displayBooksCount = [bookList countOfBookListArray];
+        displayBooksCount = [bookList.bookListArray count];
     else
         displayBooksCount += firstDisplayBooks;
     [bookListTableView reloadData];
@@ -131,7 +132,7 @@
     
     UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"提示" message:@"请您检查网络是否正常" delegate:nil cancelButtonTitle:nil otherButtonTitles:@"确定", nil];
     [alertView show];
-    [self addTableView];
+    bookListTableView.pullTableIsRefreshing = NO;
     
 }
 
@@ -141,7 +142,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     
-    if (![bookList countOfBookListArray])
+    if (![bookList.bookListArray count])
         return 0;
     return displayBooksCount;
     
@@ -157,7 +158,7 @@
         cell = [[BookListTableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:booklistCellIdentifier];
     }
 
-    Book *indexBook = [bookList indexBookModel:indexPath.row];
+    Book *indexBook = [bookList.bookListArray objectAtIndex:indexPath.row];
     [cell getBookTitleLabelText:indexBook.title];
     [cell getBookAuthorLabelText:indexBook.author];
     [cell getImageViewUrl:indexBook.image];

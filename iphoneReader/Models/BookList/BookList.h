@@ -19,9 +19,5 @@
 
 - (void)request:(NSString *)bookSpecies;
 
-- (BOOL)unarchiveBookListArray;
-- (Book *)indexBookModel:(NSInteger)index;
-- (NSInteger)countOfBookListArray;
-
 
 @end
