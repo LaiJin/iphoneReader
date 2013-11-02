@@ -134,7 +134,6 @@
     [alertView show];
     [self addTableView];
     
-
 }
 
 
@@ -145,8 +144,7 @@
     
     if (![bookList countOfBookListArray])
         return 0;
-    else
-        return displayBooksCount;
+    return displayBooksCount;
     
 }
 
