@@ -29,6 +29,7 @@
 		9A4D81C518168E3000960293 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A4D81C418168E3000960293 /* CoreData.framework */; };
 		9A53BCA7181CBB4B005A20F1 /* placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A53BCA6181CBB4B005A20F1 /* placeholder.png */; };
 		9A545ABD18237C48006AF9B2 /* CommunicationSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A545ABC18237C48006AF9B2 /* CommunicationSource.m */; };
+		9AAD7958182A1F3700F78911 /* LeftViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AAD7957182A1F3700F78911 /* LeftViewController.m */; };
 		9AD4B121181FA40400AE9967 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AD4B120181FA40400AE9967 /* QuartzCore.framework */; };
 		9ADE1C941822A095003A2B2B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ADE1C931822A095003A2B2B /* AppDelegate.m */; };
 		F84FA6A54C87468A87FC2FC9 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 645EA8F5B25044A1B88D39F5 /* libPods.a */; };
@@ -71,6 +72,8 @@
 		9A53BCA6181CBB4B005A20F1 /* placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = placeholder.png; sourceTree = "<group>"; };
 		9A545ABB18237C48006AF9B2 /* CommunicationSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommunicationSource.h; sourceTree = "<group>"; };
 		9A545ABC18237C48006AF9B2 /* CommunicationSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommunicationSource.m; sourceTree = "<group>"; };
+		9AAD7956182A1F3700F78911 /* LeftViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftViewController.h; sourceTree = "<group>"; };
+		9AAD7957182A1F3700F78911 /* LeftViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftViewController.m; sourceTree = "<group>"; };
 		9AD4B120181FA40400AE9967 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		9ADE1C921822A095003A2B2B /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		9ADE1C931822A095003A2B2B /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -154,6 +157,7 @@
 		9A19EF78181D133700D191BE /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				9AAD7955182A1F3700F78911 /* LeftViewController */,
 				9A19EF79181D133700D191BE /* RootViewController */,
 			);
 			path = Controllers;
@@ -247,6 +251,15 @@
 				9A1A26F31824DAF1005F3ED4 /* CommunicationDelegate.h */,
 			);
 			path = CommunicationSource;
+			sourceTree = "<group>";
+		};
+		9AAD7955182A1F3700F78911 /* LeftViewController */ = {
+			isa = PBXGroup;
+			children = (
+				9AAD7956182A1F3700F78911 /* LeftViewController.h */,
+				9AAD7957182A1F3700F78911 /* LeftViewController.m */,
+			);
+			path = LeftViewController;
 			sourceTree = "<group>";
 		};
 		9AB0E7571817AF3700166BDB /* Models */ = {
@@ -389,6 +402,7 @@
 				9A19EF7C181D133700D191BE /* RootViewController.m in Sources */,
 				9ADE1C941822A095003A2B2B /* AppDelegate.m in Sources */,
 				9A545ABD18237C48006AF9B2 /* CommunicationSource.m in Sources */,
+				9AAD7958182A1F3700F78911 /* LeftViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

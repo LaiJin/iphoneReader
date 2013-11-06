@@ -69,6 +69,7 @@
 #pragma mark CommunicationDelegate
 - (void)parseComplete:(NSMutableArray *)books
 {
+    
     self.bookListArray = [NSMutableArray arrayWithArray:books];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"parseComplete" object:nil];
     [NSKeyedArchiver archiveRootObject:self.bookListArray toFile:[self booklistPath]];

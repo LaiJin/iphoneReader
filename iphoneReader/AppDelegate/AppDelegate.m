@@ -7,10 +7,13 @@
 //
 
 #import "AppDelegate.h"
+#import "MMDrawerController.h"
 #import "RootViewController.h"
+#import "LeftViewController.h"
 #import "ObjectInstanceProvider.h"
 #import "ObjectMapper.h"
 #import "Book.h"
+
 
 @implementation AppDelegate
 
@@ -24,10 +27,16 @@
 	[[ObjectMapper sharedInstance] setInstanceProvider:instanceProvider];
 	[[ObjectMapper sharedInstance] setMappingProvider:self.inCodeMappingProvider];
     [self.inCodeMappingProvider mapFromDictionaryKey:@"id" toPropertyKey:@"book_id"forClass:[Book class]];//如果设置book的属性值和网页上的key不同的时候，可以用写这句代码让它识别。
-    RootViewController *rootViewController = [[RootViewController alloc]init];
-    self.navigationController = [[UINavigationController alloc]initWithRootViewController:  rootViewController];
-    self.navigationController.navigationBar.tintColor = [UIColor blackColor];
-    self.window.rootViewController = self.navigationController;
+    RootViewController *centerViewController = [[RootViewController alloc]init];
+    LeftViewController *leftDrawerViewController = [[LeftViewController alloc]init];
+    self.navigationController = [[UINavigationController alloc]initWithRootViewController:  centerViewController];
+    
+    MMDrawerController *drawerController = [[MMDrawerController alloc]initWithCenterViewController:self.navigationController leftDrawerViewController:leftDrawerViewController];
+    [drawerController setMaximumLeftDrawerWidth:160];
+    [drawerController setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeAll];
+    [drawerController setCloseDrawerGestureModeMask:MMCloseDrawerGestureModeAll];
+    
+    self.window.rootViewController = drawerController;
     [self.window makeKeyAndVisible];
     return YES;
     
