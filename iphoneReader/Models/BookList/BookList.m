@@ -25,6 +25,7 @@
     if (self) {
         self.communtcation = [[CommunicationSource alloc]init];
         self.communtcation.communicationDelegate = self;
+        //[self unarchiveBookListArray];
     }
     return self;
     

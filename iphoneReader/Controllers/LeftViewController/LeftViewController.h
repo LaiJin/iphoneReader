@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BookList.h"
 
-@interface LeftViewController : UITableViewController
+@interface LeftViewController : UITableViewController{
+    
+    BookList *leftBooksDisplay;
+    
+}
 
 @end

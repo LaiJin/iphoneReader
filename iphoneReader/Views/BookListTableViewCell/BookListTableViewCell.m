@@ -19,8 +19,8 @@
     {
         imageView = [[EGOImageView alloc]initWithPlaceholderImage:[UIImage imageNamed:@"placeholder.png"]];
         imageView.frame = CGRectMake(10, 10, 80, 100);
-        bookTitleLabel = [[UILabel alloc]initWithFrame:CGRectMake(100, 10, 220, 36)];
-        bookAuthorLabel = [[UILabel alloc]initWithFrame:CGRectMake(100,50, 220, 36)];
+        bookTitleLabel = [[UILabel alloc]initWithFrame:CGRectMake(100, 10, 170, 36)];
+        bookAuthorLabel = [[UILabel alloc]initWithFrame:CGRectMake(100,50, 170, 36)];
         [self.contentView addSubview:imageView];
         [self addSubview:bookTitleLabel];
         [self addSubview:bookAuthorLabel];

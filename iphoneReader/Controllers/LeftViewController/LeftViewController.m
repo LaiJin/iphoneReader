@@ -7,6 +7,9 @@
 //
 
 #import "LeftViewController.h"
+#import "BookListTableViewCell.h"
+#import "Book.h"
+
 
 @interface LeftViewController ()
 
@@ -14,25 +17,26 @@
 
 @implementation LeftViewController
 
+
+
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
     if (self) {
-        // Custom initialization
+        
     }
     return self;
 }
 
+
 - (void)viewDidLoad
 {
+    
     [super viewDidLoad];
-
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    leftBooksDisplay = [[BookList alloc]init];
+    
 }
+
 
 - (void)didReceiveMemoryWarning
 {
@@ -40,41 +44,59 @@
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark - Table view data source
 
+#pragma mark -
+#pragma mark UITableViewDataSource
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     
-    // Return the number of sections.
-    return 1;
+    return [leftBooksDisplay.bookListArray count];
+    
 }
+
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     
-    // Return the number of rows in the section.
-    return 5;
+    return 1;
+    
 }
+
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"CellIndentifier";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
-    }
     
+    static NSString *CellIdentifier = @"CellIndentifier";
+    BookListTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (cell == nil) {
+        cell = [[BookListTableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+    }
+    Book *leftBookModel = [leftBooksDisplay.bookListArray objectAtIndex:indexPath.section];
+    [cell getBookAuthorLabelText:leftBookModel.author];
+    [cell getBookTitleLabelText:leftBookModel.title];
+    [cell getImageViewUrl:leftBookModel.images.small];
+    cell.backgroundColor = [UIColor whiteColor];
     return cell;
+    
 }
 
 
-#pragma mark - Table view delegate
-
+#pragma mark -
+#pragma mark UITableViewDelegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
 }
+
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    return 120;
+    
+}
+
 
 @end

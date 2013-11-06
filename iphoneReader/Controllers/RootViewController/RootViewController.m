@@ -157,6 +157,7 @@
 {
     
     [self.mm_drawerController toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"leftDisplaybook" object:bookList.bookListArray];
     
 }
 
