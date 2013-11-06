@@ -91,6 +91,11 @@
 {
     
     bookListTableView = [[PullTableView alloc]initWithFrame:CGRectMake(0, 0, 320, 415) style:UITableViewStyleGrouped pullDownRefresh:YES pullUpLoadMore:YES];
+    bookListTableView.backgroundView = nil;
+    bookListTableView.backgroundColor = [UIColor colorWithRed:78.0/255.0
+                                                        green:156.0/255.0
+                                                         blue:206.0/255.0
+                                                        alpha:1.0];
     bookListTableView.pullDelegate = self;
     bookListTableView.dataSource = self;
     bookListTableView.delegate = self;
@@ -114,7 +119,7 @@
 - (void)refreshTableView
 {
     
-    [bookList request:@"ios"];
+    [bookList request:@"Movie"];
     
 }
 

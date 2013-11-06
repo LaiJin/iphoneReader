@@ -31,7 +31,7 @@
     LeftViewController *leftDrawerViewController = [[LeftViewController alloc]initWithStyle:UITableViewStylePlain];
     self.navigationController = [[UINavigationController alloc]initWithRootViewController:  centerViewController];
     MMDrawerController *drawerController = [[MMDrawerController alloc]initWithCenterViewController:self.navigationController leftDrawerViewController:leftDrawerViewController];
-    [drawerController setMaximumLeftDrawerWidth:280];
+    [drawerController setMaximumLeftDrawerWidth:200];
     [drawerController setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeAll];
     [drawerController setCloseDrawerGestureModeMask:MMCloseDrawerGestureModeAll];
     

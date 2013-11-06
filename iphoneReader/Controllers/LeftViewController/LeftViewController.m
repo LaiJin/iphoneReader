@@ -33,6 +33,7 @@
 {
     
     [super viewDidLoad];
+    //self.tableView.backgroundColor = [UIColor blackColor];
     
     
 }
@@ -60,7 +61,7 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     
-    return [leftDispalyBooks count];
+    return 1;
     
 }
 
@@ -68,7 +69,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     
-    return 1;
+    return [leftDispalyBooks count];
     
 }
 
@@ -77,15 +78,11 @@
 {
     
     static NSString *CellIdentifier = @"CellIndentifier";
-    BookListTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[BookListTableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     }
-    Book *leftBookModel = [leftDispalyBooks objectAtIndex:indexPath.section];
-    [cell getBookAuthorLabelText:leftBookModel.author];
-    [cell getBookTitleLabelText:leftBookModel.title];
-    [cell getImageViewUrl:leftBookModel.images.small];
-    cell.backgroundColor = [UIColor whiteColor];
+    //cell.backgroundColor = [UIColor blackColor]
     return cell;
     
 }
@@ -101,12 +98,7 @@
 }
 
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    
-    return 120;
-    
-}
+
 
 
 #pragma mark -
