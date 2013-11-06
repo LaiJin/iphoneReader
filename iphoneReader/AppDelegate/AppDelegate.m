@@ -30,7 +30,6 @@
     RootViewController *centerViewController = [[RootViewController alloc]init];
     LeftViewController *leftDrawerViewController = [[LeftViewController alloc]init];
     self.navigationController = [[UINavigationController alloc]initWithRootViewController:  centerViewController];
-    
     MMDrawerController *drawerController = [[MMDrawerController alloc]initWithCenterViewController:self.navigationController leftDrawerViewController:leftDrawerViewController];
     [drawerController setMaximumLeftDrawerWidth:160];
     [drawerController setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeAll];

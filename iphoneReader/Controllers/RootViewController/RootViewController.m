@@ -8,7 +8,8 @@
 
 #import "RootViewController.h"
 #import "BookListTableViewCell.h"
-
+#import "MMDrawerBarButtonItem.h"
+#import "UIViewController+MMDrawerController.h"
 
 
 @interface RootViewController ()
@@ -21,6 +22,7 @@
 
 
 @implementation RootViewController
+
 
 #define firstDisplayBooks 6
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -65,6 +67,11 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(bookListModelChange) name:@"parseComplete" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(requestFailureWarning:) name:@"requestFailed" object:nil];
     [self addTableView];
+    [self setupLeftMenuButton];
+    [self.navigationController.navigationBar setTintColor:[UIColor colorWithRed:78.0/255.0
+                                                                          green:156.0/255.0
+                                                                           blue:206.0/255.0
+                                                                           alpha:1.0]];
     
 }
 
@@ -133,6 +140,23 @@
     UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"请求失败" message:@"请您检查网络" delegate:nil cancelButtonTitle:nil otherButtonTitles:@"确定", nil];
     [alertView show];
     bookListTableView.pullTableIsRefreshing = NO;
+    
+}
+
+
+- (void)setupLeftMenuButton
+{
+    
+    MMDrawerBarButtonItem * leftDrawerButton = [[MMDrawerBarButtonItem alloc] initWithTarget:self action:@selector(leftDrawerButtonPress)];
+    [self.navigationItem setLeftBarButtonItem:leftDrawerButton animated:YES];
+    
+}
+
+
+- (void)leftDrawerButtonPress
+{
+    
+    [self.mm_drawerController toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
     
 }
 
