@@ -7,12 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "BookList.h"
+
 
 @interface LeftViewController : UITableViewController{
     
-    BookList *leftBooksDisplay;
+    @private
+    NSMutableArray *leftDispalyBooks;
     
 }
+
 
 @end

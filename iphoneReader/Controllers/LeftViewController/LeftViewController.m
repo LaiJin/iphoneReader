@@ -23,7 +23,7 @@
 {
     self = [super initWithStyle:style];
     if (self) {
-        
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(obtainleftDisplayBooks:) name:@"leftDisplayBooks" object:nil];
     }
     return self;
 }
@@ -33,7 +33,7 @@
 {
     
     [super viewDidLoad];
-    leftBooksDisplay = [[BookList alloc]init];
+    
     
 }
 
@@ -46,11 +46,21 @@
 
 
 #pragma mark -
+#pragma mark Private Methods
+- (void)obtainleftDisplayBooks:(NSNotification *)notification
+{
+    leftDispalyBooks = [NSMutableArray arrayWithArray:[notification object]];
+    [self.tableView reloadData];
+    
+}
+
+
+#pragma mark -
 #pragma mark UITableViewDataSource
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     
-    return [leftBooksDisplay.bookListArray count];
+    return [leftDispalyBooks count];
     
 }
 
@@ -71,7 +81,7 @@
     if (cell == nil) {
         cell = [[BookListTableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     }
-    Book *leftBookModel = [leftBooksDisplay.bookListArray objectAtIndex:indexPath.section];
+    Book *leftBookModel = [leftDispalyBooks objectAtIndex:indexPath.section];
     [cell getBookAuthorLabelText:leftBookModel.author];
     [cell getBookTitleLabelText:leftBookModel.title];
     [cell getImageViewUrl:leftBookModel.images.small];
@@ -98,5 +108,14 @@
     
 }
 
+
+#pragma mark -
+#pragma mark Dealloc Methods
+- (void)dealloc
+{
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"leftDisplayBooks" object:nil];
+    
+}
 
 @end

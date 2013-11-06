@@ -28,7 +28,7 @@
 	[[ObjectMapper sharedInstance] setMappingProvider:self.inCodeMappingProvider];
     [self.inCodeMappingProvider mapFromDictionaryKey:@"id" toPropertyKey:@"book_id"forClass:[Book class]];//如果设置book的属性值和网页上的key不同的时候，可以用写这句代码让它识别。
     RootViewController *centerViewController = [[RootViewController alloc]init];
-    LeftViewController *leftDrawerViewController = [[LeftViewController alloc]initWithStyle:UITableViewStyleGrouped];
+    LeftViewController *leftDrawerViewController = [[LeftViewController alloc]initWithStyle:UITableViewStylePlain];
     self.navigationController = [[UINavigationController alloc]initWithRootViewController:  centerViewController];
     MMDrawerController *drawerController = [[MMDrawerController alloc]initWithCenterViewController:self.navigationController leftDrawerViewController:leftDrawerViewController];
     [drawerController setMaximumLeftDrawerWidth:280];

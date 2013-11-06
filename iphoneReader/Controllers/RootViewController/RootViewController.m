@@ -90,7 +90,7 @@
 - (void)addTableView
 {
     
-    bookListTableView = [[PullTableView alloc]initWithFrame:CGRectMake(0, 0, 320, 415) style:UITableViewStylePlain pullDownRefresh:YES pullUpLoadMore:YES];
+    bookListTableView = [[PullTableView alloc]initWithFrame:CGRectMake(0, 0, 320, 415) style:UITableViewStyleGrouped pullDownRefresh:YES pullUpLoadMore:YES];
     bookListTableView.pullDelegate = self;
     bookListTableView.dataSource = self;
     bookListTableView.delegate = self;
@@ -114,7 +114,7 @@
 - (void)refreshTableView
 {
     
-    [bookList request:@"php"];
+    [bookList request:@"ios"];
     
 }
 
@@ -157,20 +157,27 @@
 {
     
     [self.mm_drawerController toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"leftDisplaybook" object:bookList.bookListArray];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"leftDisplayBooks" object:bookList.bookListArray];
     
 }
 
 
 #pragma mark -
 #pragma mark UITableViewDataSource
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     
     if (![bookList.bookListArray count])
         return 0;
     return displayBooksCount;
     
+}
+
+
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 1;
 }
 
 
@@ -182,8 +189,8 @@
     if (cell == nil) {
         cell = [[BookListTableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:booklistCellIdentifier];
     }
-
-    Book *indexBook = [bookList.bookListArray objectAtIndex:indexPath.row];
+    cell.backgroundColor = [UIColor whiteColor];
+    Book *indexBook = [bookList.bookListArray objectAtIndex:indexPath.section];
     [cell getBookTitleLabelText:indexBook.title];
     [cell getBookAuthorLabelText:indexBook.author];
     [cell getImageViewUrl:indexBook.image];
