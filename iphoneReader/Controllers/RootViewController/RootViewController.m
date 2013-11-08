@@ -14,8 +14,11 @@
 
 @interface RootViewController ()
 {
+    
     NSInteger displayBooksCount;
     NSInteger count;
+    NSString *bookKinds;
+    
 }
 
 @end
@@ -23,8 +26,9 @@
 
 @implementation RootViewController
 
-
+#define recommendBooks  @"books"
 #define firstDisplayBooks 6
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     
@@ -43,6 +47,7 @@
     if (self) {
         bookList = [[BookList alloc]init];
         displayBooksCount = firstDisplayBooks;
+        bookKinds = recommendBooks;
     }
     return self;
 }
@@ -66,6 +71,7 @@
     [super viewDidLoad];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(bookListModelChange) name:@"parseComplete" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(requestFailureWarning:) name:@"requestFailed" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setBookKinds:) name:@"selectBookKinds" object:nil];
     [self addTableView];
     [self setupLeftMenuButton];
     [self.navigationController.navigationBar setTintColor:[UIColor colorWithRed:78.0/255.0
@@ -118,7 +124,7 @@
 - (void)refreshTableView
 {
     
-    [bookList request:@"Music"];
+    [bookList request:bookKinds];
     
 }
 
@@ -161,6 +167,13 @@
 {
     
     [self.mm_drawerController toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
+    
+}
+
+- (void)setBookKinds:(NSNotification *)notification
+{
+    
+    bookKinds = [notification object];
     
 }
 
@@ -226,6 +239,7 @@
 {
     
     [self refreshTableView];
+
     
 }
 
@@ -245,6 +259,7 @@
     
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"requestFinished" object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"requestFailed" object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"selectBookKinds" object:nil];
     
 }
 

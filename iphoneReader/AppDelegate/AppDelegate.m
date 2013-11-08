@@ -7,7 +7,6 @@
 //
 
 #import "AppDelegate.h"
-#import "MMDrawerController.h"
 #import "RootViewController.h"
 #import "LeftViewController.h"
 #import "ObjectInstanceProvider.h"
@@ -27,15 +26,15 @@
 	[[ObjectMapper sharedInstance] setInstanceProvider:instanceProvider];
 	[[ObjectMapper sharedInstance] setMappingProvider:self.inCodeMappingProvider];
     [self.inCodeMappingProvider mapFromDictionaryKey:@"id" toPropertyKey:@"book_id"forClass:[Book class]];//如果设置book的属性值和网页上的key不同的时候，可以用写这句代码让它识别。
-    RootViewController *centerViewController = [[RootViewController alloc]init];
-    LeftViewController *leftDrawerViewController = [[LeftViewController alloc]initWithStyle:UITableViewStylePlain];
+    UIViewController *centerViewController = [[RootViewController alloc]init];
+    UIViewController *leftDrawerViewController = [[LeftViewController alloc]initWithStyle:UITableViewStylePlain];
     self.navigationController = [[UINavigationController alloc]initWithRootViewController:  centerViewController];
-    MMDrawerController *drawerController = [[MMDrawerController alloc]initWithCenterViewController:self.navigationController leftDrawerViewController:leftDrawerViewController];
-    [drawerController setMaximumLeftDrawerWidth:160];
-    [drawerController setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeAll];
-    [drawerController setCloseDrawerGestureModeMask:MMCloseDrawerGestureModeAll];
-    
-    self.window.rootViewController = drawerController;
+     self.drawerController = [[MMDrawerController alloc]initWithCenterViewController:self.navigationController leftDrawerViewController:leftDrawerViewController];
+    [self.drawerController setMaximumLeftDrawerWidth:160];
+    [self.drawerController setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeAll];
+    [self.drawerController setCloseDrawerGestureModeMask:MMCloseDrawerGestureModeAll];
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    self.window.rootViewController = self.drawerController;
     [self.window makeKeyAndVisible];
     return YES;
     

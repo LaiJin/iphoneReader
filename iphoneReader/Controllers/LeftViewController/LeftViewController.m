@@ -9,14 +9,17 @@
 #import "LeftViewController.h"
 #import "UIViewController+MMDrawerController.h"
 #import "RootViewController.h"
+#import "AppDelegate.h"
 
 
 @interface LeftViewController ()
 
 @end
 
-@implementation LeftViewController
 
+#define bookKinds @"书的分类"
+
+@implementation LeftViewController
 
 
 - (id)initWithStyle:(UITableViewStyle)style
@@ -33,7 +36,7 @@
     
     [super viewDidLoad];
     
-    catalog = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"电影类",@"movies",@"音乐类",@"musics",@"小说类",@"novels",@"杂志类",@"magazines",@"编程类",@"programs",@"计算机类",@"computers", nil];
+    catalog = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"电影类",@"movie",@"音乐类",@"music",@"小说类",@"novel",@"杂志类",@"magazine",@"编程类",@"program",@"计算机类",@"computer", nil];
     
     [self.tableView setAutoresizingMask:UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight];
     [self.tableView setSeparatorColor:[UIColor colorWithRed:49.0/255.0 green:54.0/255.0 blue:57.0/255.0
@@ -65,7 +68,7 @@
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
     
-    return @"书的分类";
+    return bookKinds;
     
 }
 
@@ -98,9 +101,9 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    RootViewController *centerViewController = [[RootViewController alloc]init];
-    UINavigationController *navController = [[UINavigationController alloc]initWithRootViewController:centerViewController];
-    [self.mm_drawerController setCenterViewController:navController withCloseAnimation:YES completion:nil];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"selectBookKinds" object:[[catalog allKeys] objectAtIndex:indexPath.row]];
+    AppDelegate *delegate = [[UIApplication sharedApplication]delegate];
+    [self.mm_drawerController setCenterViewController:delegate.navigationController withCloseAnimation:YES completion:nil];
     [tableView selectRowAtIndexPath:indexPath animated:NO scrollPosition:UITableViewScrollPositionNone];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     

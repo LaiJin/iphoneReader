@@ -8,12 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import "InCodeMappingProvider.h"
+#import "MMDrawerController.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 @property (strong, nonatomic) UINavigationController *navigationController;
 @property (strong, nonatomic) InCodeMappingProvider *inCodeMappingProvider;
+@property (strong, nonatomic) MMDrawerController *drawerController;
 
 
 @end
