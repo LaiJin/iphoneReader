@@ -48,6 +48,9 @@
         bookList = [[BookList alloc]init];
         displayBooksCount = firstDisplayBooks;
         bookKinds = recommendBooks;
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(bookListModelChange) name:@"parseComplete" object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(requestFailureWarning:) name:@"requestFailed" object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setBookKinds:) name:@"selectBookKinds" object:nil];
     }
     return self;
 }
@@ -69,9 +72,7 @@
 {
     
     [super viewDidLoad];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(bookListModelChange) name:@"parseComplete" object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(requestFailureWarning:) name:@"requestFailed" object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setBookKinds:) name:@"selectBookKinds" object:nil];
+    self.navigationItem.title = @"推荐";
     [self addTableView];
     [self setupLeftMenuButton];
     [self.navigationController.navigationBar setTintColor:[UIColor colorWithRed:78.0/255.0
@@ -99,7 +100,7 @@
     bookListTableView = [[PullTableView alloc]initWithFrame:CGRectMake(0, 0, 320, 415) style:UITableViewStyleGrouped pullDownRefresh:YES pullUpLoadMore:YES];
     bookListTableView.backgroundView = nil;
     bookListTableView.backgroundColor = [UIColor whiteColor];
-//    bookListTableView.backgroundColor = [UIColor colorWithRed:77.0/255.0 green:79.0/255.0 blue:80.0/255.0
+//  bookListTableView.backgroundColor = [UIColor colorWithRed:77.0/255.0 green:79.0/255.0 blue:80.0/255.0
 //                                                        alpha:1.0];
     bookListTableView.pullDelegate = self;
     bookListTableView.dataSource = self;
@@ -174,6 +175,11 @@
 {
     
     bookKinds = [notification object];
+    self.navigationItem.title =bookKinds;
+    if(!bookListTableView.pullTableIsRefreshing) {
+        bookListTableView.pullTableIsRefreshing = YES;
+        [self refreshTableView];
+    }
     
 }
 

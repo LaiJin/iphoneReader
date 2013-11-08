@@ -28,12 +28,12 @@
     [self.inCodeMappingProvider mapFromDictionaryKey:@"id" toPropertyKey:@"book_id"forClass:[Book class]];//如果设置book的属性值和网页上的key不同的时候，可以用写这句代码让它识别。
     UIViewController *centerViewController = [[RootViewController alloc]init];
     UIViewController *leftDrawerViewController = [[LeftViewController alloc]initWithStyle:UITableViewStylePlain];
-    self.navigationController = [[UINavigationController alloc]initWithRootViewController:  centerViewController];
+    self.navigationController = [[UINavigationController alloc]initWithRootViewController:centerViewController];
      self.drawerController = [[MMDrawerController alloc]initWithCenterViewController:self.navigationController leftDrawerViewController:leftDrawerViewController];
     [self.drawerController setMaximumLeftDrawerWidth:160];
     [self.drawerController setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeAll];
     [self.drawerController setCloseDrawerGestureModeMask:MMCloseDrawerGestureModeAll];
-    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    //self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.rootViewController = self.drawerController;
     [self.window makeKeyAndVisible];
     return YES;

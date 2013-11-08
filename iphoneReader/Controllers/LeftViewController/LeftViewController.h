@@ -7,12 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-
-
 @interface LeftViewController : UITableViewController{
     
     @private
-    NSMutableDictionary *catalog;
+    NSMutableDictionary *leftMenu;
     
 }
 
