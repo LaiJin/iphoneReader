@@ -12,7 +12,7 @@
 @interface LeftViewController : UITableViewController{
     
     @private
-    NSMutableArray *leftDispalyBooks;
+    NSMutableDictionary *catalog;
     
 }
 
