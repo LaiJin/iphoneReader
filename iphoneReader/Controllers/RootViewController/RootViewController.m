@@ -93,6 +93,8 @@
     bookListTableView = [[PullTableView alloc]initWithFrame:CGRectMake(0, 0, 320, 415) style:UITableViewStyleGrouped pullDownRefresh:YES pullUpLoadMore:YES];
     bookListTableView.backgroundView = nil;
     bookListTableView.backgroundColor = [UIColor whiteColor];
+//    bookListTableView.backgroundColor = [UIColor colorWithRed:77.0/255.0 green:79.0/255.0 blue:80.0/255.0
+//                                                        alpha:1.0];
     bookListTableView.pullDelegate = self;
     bookListTableView.dataSource = self;
     bookListTableView.delegate = self;
@@ -159,7 +161,6 @@
 {
     
     [self.mm_drawerController toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"leftDisplayBooks" object:bookList.bookListArray];
     
 }
 

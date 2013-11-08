@@ -7,7 +7,7 @@
 //
 
 #import "LeftViewController.h"
-#import "BookListTableViewCell.h"
+#import "UIViewController+MMDrawerController.h"
 #import "RootViewController.h"
 
 
@@ -23,7 +23,6 @@
 {
     self = [super initWithStyle:style];
     if (self) {
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(obtainleftDisplayBooks:) name:@"leftDisplayBooks" object:nil];
     }
     return self;
 }
@@ -55,16 +54,6 @@
 
 
 #pragma mark -
-#pragma mark Private Methods
-- (void)obtainleftDisplayBooks:(NSNotification *)notification
-{
-    leftDispalyBooks = [NSMutableArray arrayWithArray:[notification object]];
-    [self.tableView reloadData];
-    
-}
-
-
-#pragma mark -
 #pragma mark UITableViewDataSource
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -77,7 +66,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     
-    return [leftDispalyBooks count];
+    return 3;
     
 }
 
@@ -90,7 +79,7 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     }
-    //cell.backgroundColor = [UIColor blackColor]
+    
     return cell;
     
 }
@@ -101,107 +90,13 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    switch (indexPath.section) {
-        case MMDrawerSectionViewSelection:{
-            RootViewController * center = [[RootViewController alloc] init];
-            
-            UINavigationController * nav = [[UINavigationController alloc] initWithRootViewController:center];
-            
-            if(indexPath.row%2==0){
-                [self.mm_drawerController
-                 setCenterViewController:nav
-                 withCloseAnimation:YES
-                 completion:nil];
-            }
-            else {
-                [self.mm_drawerController
-                 setCenterViewController:nav
-                 withFullCloseAnimation:YES
-                 completion:nil];
-            }
-            break;
-        }
-            
-        case MMDrawerSectionDrawerWidth:{
-            //Implement in Subclass
-            break;
-        }
-        case MMDrawerSectionShadowToggle:{
-            [self.mm_drawerController setShowsShadow:!self.mm_drawerController.showsShadow];
-            [tableView reloadSections:[NSIndexSet indexSetWithIndex:indexPath.section] withRowAnimation:UITableViewRowAnimationNone];
-            break;
-        }
-        case MMDrawerSectionOpenDrawerGestures:{
-            switch (indexPath.row) {
-                case 0:
-                    self.mm_drawerController.openDrawerGestureModeMask ^= MMOpenDrawerGestureModePanningNavigationBar;
-                    break;
-                case 1:
-                    self.mm_drawerController.openDrawerGestureModeMask ^=  MMOpenDrawerGestureModePanningCenterView;
-                    break;
-                case 2:
-                    self.mm_drawerController.openDrawerGestureModeMask ^=  MMOpenDrawerGestureModeBezelPanningCenterView;
-                    break;
-                default:
-                    break;
-            }
-            [tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
-            break;
-        }
-        case MMDrawerSectionCloseDrawerGestures:{
-            switch (indexPath.row) {
-                case 0:
-                    self.mm_drawerController.closeDrawerGestureModeMask ^= MMCloseDrawerGestureModePanningNavigationBar;
-                    break;
-                case 1:
-                    self.mm_drawerController.closeDrawerGestureModeMask ^= MMCloseDrawerGestureModePanningCenterView;
-                    break;
-                case 2:
-                    self.mm_drawerController.closeDrawerGestureModeMask ^= MMCloseDrawerGestureModeBezelPanningCenterView;
-                    break;
-                case 3:
-                    self.mm_drawerController.closeDrawerGestureModeMask ^= MMCloseDrawerGestureModeTapNavigationBar;
-                    break;
-                case 4:
-                    self.mm_drawerController.closeDrawerGestureModeMask ^= MMCloseDrawerGestureModeTapCenterView;
-                    break;
-                case 5:
-                    self.mm_drawerController.closeDrawerGestureModeMask ^= MMCloseDrawerGestureModePanningDrawerView;
-                    break;
-                default:
-                    break;
-            }
-            [tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
-            break;
-        }
-        case MMDrawerSectionCenterHiddenInteraction:{
-            self.mm_drawerController.centerHiddenInteractionMode = indexPath.row;
-            [tableView reloadSections:[NSIndexSet indexSetWithIndex:indexPath.section] withRowAnimation:UITableViewRowAnimationNone];
-            break;
-        }
-        case MMDrawerSectionStretchDrawer:{
-            self.mm_drawerController.shouldStretchDrawer = !self.mm_drawerController.shouldStretchDrawer;
-            [tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
-            break;
-        }
-        default:
-            break;
-    }
-    [tableView selectRowAtIndexPath:indexPath animated:NO scrollPosition:UITableViewScrollPositionNone];
+    RootViewController *centerViewController = [[RootViewController alloc]init];
+    UINavigationController *navController = [[UINavigationController alloc]initWithRootViewController:centerViewController];
+    [self.mm_drawerController setCenterViewController:navController withCloseAnimation:YES completion:nil];
+    //[tableView selectRowAtIndexPath:indexPath animated:NO scrollPosition:UITableViewScrollPositionNone];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-}
-
-
-
-
-
-#pragma mark -
-#pragma mark Dealloc Methods
-- (void)dealloc
-{
-    
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"leftDisplayBooks" object:nil];
     
 }
+
 
 @end
