@@ -178,7 +178,7 @@
     self.navigationItem.title =bookKinds;
     if(!bookListTableView.pullTableIsRefreshing) {
         bookListTableView.pullTableIsRefreshing = YES;
-        [self refreshTableView];
+        [self performSelector:@selector(refreshTableView) withObject:nil afterDelay:3.0f];
     }
     
 }
@@ -194,7 +194,6 @@
     return displayBooksCount;
     
 }
-
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -245,7 +244,6 @@
 {
     
     [self refreshTableView];
-
     
 }
 
