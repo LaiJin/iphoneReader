@@ -32,7 +32,6 @@
     [self.drawerController setMaximumLeftDrawerWidth:160];
     [self.drawerController setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeAll];
     [self.drawerController setCloseDrawerGestureModeMask:MMCloseDrawerGestureModeAll];
-    //self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.rootViewController = self.drawerController;
     [self.window makeKeyAndVisible];
     return YES;

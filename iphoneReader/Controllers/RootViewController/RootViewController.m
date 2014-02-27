@@ -26,8 +26,8 @@
 
 @implementation RootViewController
 
-#define recommendBooks  @"books"
-#define firstDisplayBooks 6
+#define kRecommendBooks  @"books"
+#define kFirstDisplayBooks 6
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -46,8 +46,8 @@
     self = [super init];
     if (self) {
         bookList = [[BookList alloc]init];
-        displayBooksCount = firstDisplayBooks;
-        bookKinds = recommendBooks;
+        displayBooksCount = kFirstDisplayBooks;
+        bookKinds = kRecommendBooks;
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(bookListModelChange) name:@"parseComplete" object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(requestFailureWarning:) name:@"requestFailed" object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setBookKinds:) name:@"selectBookKinds" object:nil];
@@ -97,11 +97,11 @@
 - (void)addTableView
 {
     
-    bookListTableView = [[PullTableView alloc]initWithFrame:CGRectMake(0, 0, 320, 415) style:UITableViewStyleGrouped pullDownRefresh:YES pullUpLoadMore:YES];
+    bookListTableView = [[PullTableView alloc]initWithFrame:self.view.bounds style:UITableViewStyleGrouped pullDownRefresh:YES pullUpLoadMore:YES];
     bookListTableView.backgroundView = nil;
     bookListTableView.backgroundColor = [UIColor whiteColor];
-//  bookListTableView.backgroundColor = [UIColor colorWithRed:77.0/255.0 green:79.0/255.0 blue:80.0/255.0
-//                                                        alpha:1.0];
+    bookListTableView.backgroundColor = [UIColor colorWithRed:77.0/255.0 green:79.0/255.0 blue:80.0/255.0
+                                                        alpha:1.0];
     bookListTableView.pullDelegate = self;
     bookListTableView.dataSource = self;
     bookListTableView.delegate = self;
@@ -114,7 +114,8 @@
 - (void)bookListModelChange
 {
     
-    count = [bookList.bookListArray count] - [bookList.bookListArray count] % firstDisplayBooks;
+    count = [bookList.bookListArray count] - [bookList.bookListArray count] % kFirstDisplayBooks;
+    displayBooksCount = kFirstDisplayBooks;
     [bookListTableView reloadData];
     bookListTableView.pullLastRefreshDate = [NSDate date];
     bookListTableView.pullTableIsRefreshing = NO;
@@ -135,15 +136,15 @@
     
     if ([bookList.bookListArray count] <= displayBooksCount)
         displayBooksCount = [bookList.bookListArray count];
-    else if (count == displayBooksCount)
+    else if (count <= displayBooksCount)
         displayBooksCount = [bookList.bookListArray count];
     else
-        displayBooksCount += firstDisplayBooks;
+        displayBooksCount += kFirstDisplayBooks;
     [bookListTableView reloadData];
     bookListTableView.pullTableIsLoadingMore = NO;
     
 }
-
+ 
 
 - (void)requestFailureWarning:(NSNotification *)notification
 {
@@ -204,7 +205,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
+
     static NSString *booklistCellIdentifier = @"booklistCellIdentifier";
     BookListTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:booklistCellIdentifier];
     if (cell == nil) {

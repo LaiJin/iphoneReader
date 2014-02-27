@@ -38,8 +38,9 @@
     [self.tableView setAutoresizingMask:UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight];
     [self.tableView setSeparatorColor:[UIColor colorWithRed:49.0/255.0 green:54.0/255.0 blue:57.0/255.0
                                                       alpha:1.0]];
-    [self.tableView setBackgroundColor:[UIColor colorWithRed:77.0/255.0 green:79.0/255.0 blue:80.0/255.0
-                                                       alpha:1.0]];
+//    [self.tableView setBackgroundColor:[UIColor colorWithRed:77.0/255.0 green:79.0/255.0 blue:80.0/255.0
+//                                                       alpha:1.0]];
+    [self.tableView setBackgroundColor:[UIColor whiteColor]];
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     
 }
@@ -86,7 +87,7 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     }
-    cell.textLabel.textColor = [UIColor whiteColor];
+//    cell.textLabel.textColor = [UIColor whiteColor];
     cell.textLabel.text = [[leftMenu allValues] objectAtIndex:indexPath.row];
     return cell;
     

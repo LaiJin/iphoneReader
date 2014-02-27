@@ -37,9 +37,8 @@
     NSDictionary *jsonDictionary = [NSJSONSerialization JSONObjectWithData:responseData options:0 error:nil];
     NSArray *booksArray = [jsonDictionary objectForKey:@"books"];
     NSMutableArray *books = [[NSMutableArray alloc]init];
-    
     for (int i = 0; i < [booksArray count]; i++) {
-        Book *indexBook = [Book objectFromDictionary: [booksArray objectAtIndex:i]];
+        Book *indexBook = [Book objectFromDictionary:[booksArray objectAtIndex:i]];
         [books addObject:indexBook];
     }
     

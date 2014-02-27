@@ -22,8 +22,8 @@
         bookTitleLabel = [[UILabel alloc]initWithFrame:CGRectMake(100, 10, 200, 36)];
         bookAuthorLabel = [[UILabel alloc]initWithFrame:CGRectMake(100,50, 200, 36)];
         [self.contentView addSubview:imageView];
-        [self addSubview:bookTitleLabel];
-        [self addSubview:bookAuthorLabel];
+        [self.contentView addSubview:bookTitleLabel];
+        [self.contentView addSubview:bookAuthorLabel];
     }
     return self;
     
